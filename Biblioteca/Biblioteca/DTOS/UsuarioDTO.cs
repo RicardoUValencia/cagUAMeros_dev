@@ -17,7 +17,7 @@ namespace Biblioteca.DTOS
 
         [Required]
         [Display(Name = "Correo")]
-        [StringLength(50, ErrorMessage = "Lalongutid maxima es de 50 caracteres")]
+        [StringLength(50, ErrorMessage = "La longutid maxima es de 50 caracteres")]
         public string Email { get; set; }
 
         [Required]
