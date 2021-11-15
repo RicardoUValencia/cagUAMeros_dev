@@ -1,0 +1,73 @@
+﻿@using Biblioteca.DTOS
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Mi aplicación ASP.NET</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Libreria digital", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Inicio", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Buscar", "Index", "Buscar")</li>
+                    @if (Session["Administrador"] != null)
+                    {
+                        <li>@Html.ActionLink("Empleados", "Index", "Empleado")</li>
+                        <li>@Html.ActionLink("Libros", "Index", "Libro")</li>
+                        <li>@Html.ActionLink("Usuarios", "Index", "Usuario")</li>
+                        <li>@Html.ActionLink("Categoria", "Index", "Categoria")</li>
+                        <li>@Html.ActionLink("Prestamos", "Index", "Prestamo")</li>
+                    }
+                    else if (Session["Bibliotecario"] != null)
+                    {
+                        <li>@Html.ActionLink("Libros", "Index", "Libro")</li>
+                        <li>@Html.ActionLink("Categoria", "Index", "Categoria")</li>
+                        <li>@Html.ActionLink("Usuarios", "Index", "Usuario")</li>
+                        <li>@Html.ActionLink("Prestamos", "Index", "Prestamo")</li>
+                    }
+
+                    <li>@Html.ActionLink("Acerca de", "About", "Home")</li>
+                    <li>@Html.ActionLink("Contacto", "Contact", "Home")</li>
+                    @*Cerrar sesion*@
+
+                    @if (Session["Administrador"] != null || Session["Bibliotecario"] != null || Session["Usuario"] != null)
+                    {
+                        <li>@Html.ActionLink("Cerrar sesión", "CerrarSesion", "Login")</li>
+                        @*<li>@Html.ActionLink("Perfil", "Perfil", "Login")</li>*@
+                    }
+                    else
+                    {
+                        <li>@Html.ActionLink("Login", "Index", "Login")</li>
+                    }
+
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Biblioteca digital</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

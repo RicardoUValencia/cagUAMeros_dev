@@ -1,0 +1,149 @@
+﻿@using Biblioteca.DTOS
+@model IEnumerable<LibroDTO>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Agregar", "Agregar", "Libro", null, new { @class = "btn btn-primary" })
+</p>
+
+@using (Html.BeginForm("Index", "Libro", FormMethod.Post, new { @id = "frmFiltro" }))
+{
+    <table class="table">
+        <tr>
+
+            <th>
+                @Html.DisplayNameFor(model => model.ID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Titulo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre_Autor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Anio_Publicacion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Edicion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.lenguaje)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.categoria_Libro)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Disponibles)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ubicacion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Fecha_Registro)
+            </th>
+            <th>
+                Operaciones
+            </th>
+        </tr>
+        <tr>
+            <td></td>
+            <td>@Html.TextBox("Titulo", null, new { @class = "form-control" })</td>
+            <td>@Html.TextBox("Nombre_Autor", null, new { @class = "form-control" })</td>
+            <td></td>
+            <td></td>
+            <td>@Html.TextBox("lenguaje", null, new { @class = "form-control" })</td>
+            <td>@Html.TextBox("categoria_Libro", null, new { @class = "form-control" })</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.ID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Titulo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nombre_Autor)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Anio_Publicacion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Edicion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.lenguaje)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.categoria_Libro)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Disponibles)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Ubicacion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Fecha_Registro)
+                </td>
+
+                <td>
+                    @Html.ActionLink(" ", "Editar", "Libro", new { id = @item.ID }, new { @class = "glyphicon glyphicon-pencil btn btn-primary", @Onclick = "editar()" })
+
+                    @Html.ActionLink(" ", "Eliminar", "Libro", new { id = @item.ID }, new { @class = "glyphicon glyphicon-trash btn btn-danger", @Onclick = "eliminar()" })
+                </td>
+            </tr>
+        }
+
+    </table>
+}
+<script>
+
+    let Titulo = document.getElementById("Titulo");
+    let Nombre_Autor = document.getElementById("Nombre_Autor");
+    let lenguaje = document.getElementById("lenguaje");
+    let categoria_Libro = document.getElementById("categoria_Libro");
+    let frmFiltro = document.getElementById("frmFiltro");
+
+    Titulo.onkeyup = function () {
+        frmFiltro.submit();
+    }
+
+    Nombre_Autor.onkeyup = function () {
+        frmFiltro.submit();
+    }
+
+    lenguaje.onkeyup = function (){
+        frmFiltro.submit();
+    }
+
+    categoria_Libro.onkeyup = function () {
+        frmFiltro.submit();
+    }
+
+    function editar() {
+        if (confirm("¿Desea editar el registro?") == 1) {
+        } else {
+            event.preventDefault();
+        }
+    }
+
+    function eliminar() {
+        if (confirm("¿Desea eliminar el registro?") == 1) {
+            alert("Se elimino correctamente");
+        } else {
+            event.preventDefault();
+        }
+    }
+</script>

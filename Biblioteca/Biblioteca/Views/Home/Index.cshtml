@@ -1,0 +1,27 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>Biblioteca digital</h1>
+    <p class="lead">Este es una espacio para alumnos, profesores y personal de esta institución.</p>
+    <p>Realiza una búsqueda</p>
+    <p class="btn btn-default">@Html.ActionLink("Buscar", "Index", "Buscar")</p>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <h2>Registro</h2>
+        <p>
+            ¿No estas registrado y perteneces a esta institución? Acercate con algún trabajador para que te registre y tener acceso a prestamos.
+        </p>
+
+    </div>
+    <div class="col-md-4">
+        <h2>Sor Juana Inés De la Cruz</h2>
+        <p>"Sin claridad no hay voz de sabiduría."</p>
+    </div>
+    <div class="col-md-4">
+        <img src="~/Img/Sor_Juana.png">
+    </div>
+</div>

@@ -1,0 +1,122 @@
+﻿@using Biblioteca.DTOS
+@model IEnumerable<UsuarioDTO>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Empleados</h2>
+
+<p>
+    @Html.ActionLink("Agregar", "Agregar", "Empleado", null, new { @class = "btn btn-primary" })
+</p>
+
+@using (Html.BeginForm("Index", "Empleado", FormMethod.Post, new { @id = "frmEmpleado" }))
+{
+    <table class="table">
+        <tr>
+
+            <th>
+                @Html.DisplayNameFor(model => model.ID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Puesto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Telefono)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Fecha_Nacimiento)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Direccion)
+            </th>
+            <th>
+                Operaciones
+            </th>
+
+        </tr>
+
+        <tr>
+            <td></td>
+            <td>@Html.TextBox("Nombre", null, new { @class = "form-control" })</td>
+            <td>@Html.TextBox("Tipo_Usuario", null, new { @class = "form-control" })</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.ID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Tipo_Usuario)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Telefono)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Fecha_Nacimiento)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Direccion)
+                </td>
+
+                <td>
+                    @Html.ActionLink(" ", "Editar", "Empleado", new { id = @item.ID }, new { @class = "glyphicon glyphicon-pencil btn btn-primary", @Onclick = "editar()" })
+
+                    @Html.ActionLink(" ", "Eliminar", "Empleado", new { id = @item.ID }, new { @class = "glyphicon glyphicon-trash btn btn-danger", @Onclick = "eliminar()" })
+                </td>
+            </tr>
+        }
+
+    </table>
+}
+
+<script>
+
+    let frmEmpleado = document.getElementById("frmEmpleado");
+    let Nombre = document.getElementById("Nombre");
+    let Puesto = document.getElementById("Tipo_Usuario");
+
+    Nombre.onkeyup = function () {
+        frmEmpleado.submit();
+    }
+
+    Puesto.onkeyup = function () {
+        frmEmpleado.submit();
+    }
+
+    function editar() {
+        if (confirm("¿Desea editar el registro?") == 1) {
+        } else {
+            event.preventDefault();
+        }
+    }
+
+    function eliminar() {
+        if (confirm("¿Desea eliminar el registro?") == 1) {
+            alert("Se elimino correctamente");
+        } else {
+            event.preventDefault();
+        }
+    }
+</script>
+

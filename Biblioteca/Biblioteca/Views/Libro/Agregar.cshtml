@@ -1,0 +1,112 @@
+﻿@using Biblioteca.DTOS
+@model LibroDTO
+@{
+    ViewBag.Title = "Agregar";
+    List<SelectListItem> categorias = (List<SelectListItem>)ViewBag.listaCategoria;
+}
+
+<h2>Agregar libro</h2>
+
+<div class="row">
+    <div class="col-md-6">
+        @using (Html.BeginForm("Agregar", "Libro", FormMethod.Post, new { @id = "frmAgregar", @enctype = "multipart/form-data" }))
+        {
+            <div>
+                @if (Model != null && Model.mensaje != null)
+                {
+                    @Html.Label(Model.mensaje, new { @class = "text-danger" });
+                }
+            </div>
+            <div>
+                @Html.LabelFor(p => p.Titulo)
+                @Html.TextBoxFor(p => p.Titulo, new { @class = "form-control" })
+                @Html.ValidationMessage("Titulo", new { @class = "text-danger" })
+            </div>
+
+            <div>
+                @Html.LabelFor(p => p.Nombre_Autor)
+                @Html.TextBoxFor(p => p.Nombre_Autor, new { @class = "form-control" })
+                <p>@Html.ValidationMessage("Nombre_Autor", new { @class = "text-danger" })</p>
+            </div>
+
+            <div>
+                @Html.LabelFor(p => p.Anio_Publicacion)
+                @Html.TextBoxFor(p => p.Anio_Publicacion, new { htmlAttribute = new { @class = "form-control" } })
+                @Html.ValidationMessage("Anio_Publicacion", new { @class = "text-danger" })
+            </div>
+
+            <div>
+                @Html.LabelFor(p => p.Edicion)
+                @Html.TextBoxFor(p => p.Edicion, null, new { @class = "form-control" })
+                @Html.ValidationMessage("Edicion", new { @class = "text-danger" })
+            </div>
+
+            <div>
+                @Html.LabelFor(p => p.lenguaje)
+                @Html.TextBoxFor(p => p.lenguaje, null, new { @class = "form-control" })
+                @Html.ValidationMessage("lenguaje", new { @class = "text-danger" })
+            </div>
+
+            <div>
+                @Html.LabelFor(p => p.IDCategoria)
+                @Html.DropDownList("IDCategoria", categorias, null, new { @class = "form-control" })
+                @Html.ValidationMessageFor(p => p.IDCategoria, "", new { @class = "text-danger" })
+            </div>
+
+            <div style="margin-top:10px;">
+                @Html.LabelFor(p => p.Cantidad)
+                @Html.TextBoxFor(p => p.Cantidad, new { htmlAttribute = new { @class = "form-control" } })
+            </div>
+
+            <div style="margin-top:10px;">
+                @Html.LabelFor(p => p.Ubicacion)
+                @Html.TextBoxFor(p => p.Ubicacion, new { htmlAttribute = new { @class = "form-control" } })
+                <p>@Html.ValidationMessage("Ubicacion", new { @class = "text-danger" })</p>
+                @if (Model != null && Model.mensajeEstante != null)
+                {
+                    @Html.Label(Model.mensajeEstante);
+                }
+            </div>
+
+            <br />
+            <div style="margin:auto;">
+                <button type="submit" class="btn btn-primary" , onclick="agregar()">
+                    Guardar
+                </button>
+                @Html.ActionLink("Regresar", "Index", "Libro", null, new { @class = "btn btn-danger", @Onclick = "regresar()" })
+            </div>
+
+        }
+    </div>
+</div>
+
+<script>
+    function agregar() {
+        if (confirm("¿Deseas guardar los cambios?")) {
+            alert("Nuevo libro registrado");
+        } else {
+            event.preventDefault();
+        }
+    }
+
+    function regresar() {
+        if (confirm("¿Desea cancelar los cambios?") == 1) {
+            alert("Libro no registrado");
+        } else {
+            event.preventDefault();
+        }
+    }
+
+    let imgFoto = document.getElementById("imgFoto");
+    let fupFoto = document.getElementById("fupFoto");
+    fupFoto.onchange = function () {
+        let files = fupFoto.files[0];
+        let reader = new FileReader();
+        reader.onloadend = function () {
+            imgFoto.src = reader.result;
+            document.getElementById("nombreFoto").value = file.name;
+        }
+
+        reader.readAsDataURL(files);
+    }
+</script>

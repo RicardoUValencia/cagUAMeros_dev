@@ -1,0 +1,84 @@
+﻿@using Biblioteca.DTOS
+@model IEnumerable<CategoriaDTO>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<h2>Categorias</h2>
+
+<p>
+    @Html.ActionLink("Agregar", "Agregar", "Categoria", null, new { @class = "btn btn-primary" })
+</p>
+
+@using (Html.BeginForm("Index", "Categoria", FormMethod.Post, new { @id = "frmCategoria" }))
+{
+    <table class="table">
+        <tr>
+
+            <th>
+                @Html.DisplayNameFor(model => model.ID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre_Categoria)
+            </th>
+            <th>
+                Operaciones
+            </th>
+
+        </tr>
+
+        <tr>
+            <td></td>
+            <td>@Html.TextBox("Nombre_Categoria", null, new { @class = "form-control" })</td>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.ID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nombre_Categoria)
+                </td>
+
+
+                <td>
+                    @Html.ActionLink(" ", "Editar", "Categoria", new { id = @item.ID }, new { @class = "glyphicon glyphicon-pencil btn btn-primary", @onclick = "editar()" })
+
+                    @Html.ActionLink(" ", "Eliminar", "Categoria", new { id = @item.ID }, new { @class = "glyphicon glyphicon-trash btn btn-danger", @onclick = "eliminar()" })
+                </td>
+            </tr>
+        }
+
+    </table>
+}
+
+<script>
+
+    let frmCategoria = document.getElementById("frmCategoria")
+    let Nombre_Categoria = document.getElementById("Nombre_Categoria");
+
+    Nombre_Categoria.onkeyup = function () {
+        frmCategoria.submit();
+    }
+
+    function editar() {
+        if (confirm("¿Desea editar el registro?") == 1) {
+        } else {
+            event.preventDefault();
+        }
+    }
+
+    function eliminar() {
+        if (confirm("¿Desea eliminar el registro?") == 1) {
+            alert("Se elimino correctamente");
+        } else {
+            event.preventDefault();
+        }
+    }
+
+</script>

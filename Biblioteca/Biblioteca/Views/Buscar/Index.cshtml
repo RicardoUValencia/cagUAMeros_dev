@@ -1,0 +1,20 @@
+﻿@using Biblioteca.DTOS
+@model IEnumerable<LibroDTO>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2 style="text-align:center;margin-bottom:50px;">Biblioteca Digital</h2>
+
+
+@using (Html.BeginForm("Buscar", "Buscar", FormMethod.Post))
+{
+
+    <div style="width:100%;display:flex;justify-content:center;">
+
+        @Html.TextBox("Titulo_Autor")
+        <input type="submit" class="btn btn-group" value="Buscar" />
+    </div>
+
+}

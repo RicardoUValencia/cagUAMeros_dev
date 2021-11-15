@@ -1,0 +1,54 @@
+﻿@using Biblioteca.DTOS
+@model CategoriaDTO
+@{
+    ViewBag.Title = "Editar";
+}
+
+<h2>Editar categoria</h2>
+
+<div class="row">
+    <div class="col-md-6">
+        @*Accion   Controlador metodo *@
+        @using (@Html.BeginForm("Editar", "Categoria", FormMethod.Post, new { @id = "frmEditar" }))
+        {
+
+            <div>
+                @Html.LabelFor(p => p.ID)
+                @Html.TextBoxFor(p => p.ID, new { @class = "form-control", @readOnly = true })
+            </div>
+
+            <div style="margin-bottom:10px;">
+                @Html.LabelFor(p => p.Nombre_Categoria)
+                @Html.TextBoxFor(p => p.Nombre_Categoria, new { @class = "form-control" })
+                @Html.ValidationMessage("Nombre_Categoria", new { @class = "text-danger" })
+            </div>
+
+            <br />
+            <div style="margin:auto;">
+                <button type="submit" class="btn btn-primary" , onclick="editar()">
+                    Guardar
+                </button>
+                @Html.ActionLink("Regresar", "Index", "Categoria", null, new { @class = "btn btn-danger", @Onclick = "regresar()" })
+            </div>
+        }
+    </div>
+</div>
+
+<script>
+    function editar() {
+        if (confirm("¿Deseas guardar los cambios?")) {
+            alert("Informacion editada");
+        } else {
+            event.preventDefault();
+        }
+    }
+
+    function regresar() {
+        if (confirm("¿Desea cancelar los cambios?") == 1) {
+            alert("Cambios no guardados");
+        } else {
+            event.preventDefault();
+        }
+    }
+</script>
+

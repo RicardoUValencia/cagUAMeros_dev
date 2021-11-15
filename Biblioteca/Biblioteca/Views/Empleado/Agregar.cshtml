@@ -1,0 +1,100 @@
+﻿@using Biblioteca.DTOS
+@model UsuarioDTO
+@{
+    ViewBag.Title = "Agregar";
+    List<SelectListItem> tipoUsuario = (List<SelectListItem>)ViewBag.usuarios;
+
+}
+
+<h2>Registro de empleados</h2>
+
+<div class="row">
+    <div class="col-md-6">
+        @*Accion   Controlador metodo *@
+        @using (@Html.BeginForm("Agregar", "Empleado", FormMethod.Post, new { @id = "frmAgregar" }))
+        {
+
+            <div>
+                @Html.LabelFor(p => p.Nombre)
+                @Html.TextBoxFor(p => p.Nombre, new { @class = "form-control" })
+                @Html.ValidationMessage("Nombre", new { @class = "text-danger" })
+            </div>
+
+            <div>
+                @Html.LabelFor(p => p.Email)
+                @Html.TextBoxFor(p => p.Email, new { @class = "form-control" })
+                @Html.ValidationMessage("Email", new { @class = "text-danger" })
+            </div>
+
+            <div>
+                @Html.LabelFor(p => p.Telefono)
+                @Html.TextBoxFor(p => p.Telefono, null, new { @class = "form-control" })
+                @Html.ValidationMessage("Telefono", new { @class = "text-danger" })
+            </div>
+
+            <div>
+                @Html.LabelFor(p => p.Password)
+                @Html.Password("Password", null, new { @class = "form-control" })
+                <p>@Html.ValidationMessage("Password", new { @class = "text-danger" })</p>
+            </div>
+
+            <div>
+                @Html.LabelFor(p => p.Direccion)
+                @Html.TextBoxFor(p => p.Direccion, new { @class = "form-control" })
+                @Html.ValidationMessage("Direccion", new { @class = "text-danger" })
+            </div>
+
+            <div style="margin-top:10px;">
+                @Html.LabelFor(p => p.Fecha_Nacimiento)
+                @Html.EditorFor(p => p.Fecha_Nacimiento, new { htmlAttribute = new { @class = "form-control" } })
+                <p>@Html.ValidationMessage("Fecha_Nacimiento", new { @class = "text-danger" })</p>
+            </div>
+
+            <div>
+                @Html.LabelFor(p => p.Tipo_Usuario)
+                @Html.DropDownList("TipoUsuarioID", tipoUsuario, new { @class = "form-control" })
+            </div>
+
+            <br />
+            <div style="margin:auto;">
+                <button type="submit" class="btn btn-primary" , onclick="agregar()">
+                    Guardar
+                </button>
+                @Html.ActionLink("Regresar", "Index", "Empleado", null, new { @class = "btn btn-danger", @Onclick = "regresar()" })
+            </div>
+
+        }
+    </div>
+</div>
+
+<script>
+    function agregar() {
+        if (confirm("¿Deseas guardar los cambios?")) {
+        } else {
+            event.preventDefault();
+        }
+    }
+
+    function regresar() {
+        if (confirm("¿Desea cancelar los cambios?") == 1) {
+            alert("Empleado no registrado");
+        } else {
+            event.preventDefault();
+        }
+    }
+
+    let imgFoto = document.getElementById("imgFoto");
+    let fupFoto = document.getElementById("fupFoto");
+    fupFoto.onchange = function () {
+        let files = fupFoto.files[0];
+        let reader = new FileReader();
+        reader.onloadend = function () {
+            imgFoto.src = reader.result;
+            document.getElementById("nombreFoto").value = file.name;
+        }
+
+        reader.readAsDataURL(files);
+    }
+
+</script>
+

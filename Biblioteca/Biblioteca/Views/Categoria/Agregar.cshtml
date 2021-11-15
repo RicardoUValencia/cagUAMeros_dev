@@ -1,0 +1,56 @@
+﻿@using Biblioteca.DTOS
+@model CategoriaDTO
+@{
+    ViewBag.Title = "Agregar";
+}
+
+<h2>Agregar categoria</h2>
+
+<div class="row">
+    <div class="col-md-6">
+        @*Accion   Controlador metodo *@
+        @using (@Html.BeginForm("Agregar", "Categoria", FormMethod.Post, new { @id = "frmEditar" }))
+        {
+
+            <div style="margin-bottom:10px;">
+                @Html.LabelFor(p => p.Nombre_Categoria)
+                @Html.TextBoxFor(p => p.Nombre_Categoria, new { @class = "form-control" })
+                @Html.ValidationMessage("Nombre_Categoria", new { @class = "text-danger" })
+
+                @if (Model != null && Model.mensaje != null)
+                {
+                    @Html.Label(Model.mensaje, new { @class = "text-danger", @id = "msjError" })
+                }
+            </div>
+
+            <br />
+            <div style="margin:auto;">
+                <button type="submit" class="btn btn-primary" onclick="confirmar()">
+                    Guardar
+                </button>
+                @Html.ActionLink("Regresar", "Index", "Categoria", null, new { @class = "btn btn-danger", @Onclick = "regresar()" })
+            </div>
+
+        }
+    </div>
+</div>
+
+<script>
+
+
+    function confirmar() {
+        if (confirm("¿Desea guardar los cambios?") == 1) {
+        } else {
+            event.preventDefault();
+        }
+    }
+
+    function regresar() {
+        if (confirm("¿Desea cancelar los cambios?") == 1) {
+            alert("Categoria no registrada");
+        } else {
+            event.preventDefault();
+        }
+    }
+</script>
+

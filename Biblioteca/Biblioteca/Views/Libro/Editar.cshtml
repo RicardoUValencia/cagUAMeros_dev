@@ -1,0 +1,97 @@
+﻿@using Biblioteca.DTOS
+@model LibroDTO
+@{
+    ViewBag.Title = "Editar";
+    List<SelectListItem> categorias = (List<SelectListItem>)ViewBag.listaCategoria;
+}
+
+<h2>Editar informacion</h2>
+
+<div class="row">
+    <div class="col-md-6">
+        @*Accion   Controlador metodo *@
+        @using (Html.BeginForm("Editar", "Libro", FormMethod.Post, new { @id = "frmEditar" }))
+        {
+
+            <div>
+                @Html.LabelFor(p => p.ID)
+                @Html.TextBoxFor(p => p.ID, new { @class = "form-control", @readOnly = true })
+            </div>
+
+            <div>
+                @Html.LabelFor(p => p.Titulo)
+                @Html.TextBoxFor(p => p.Titulo, new { @class = "form-control" })
+                @Html.ValidationMessage("Titulo", new { @class = "text-danger" })
+            </div>
+
+            <div>
+                @Html.LabelFor(p => p.Nombre_Autor)
+                @Html.TextBoxFor(p => p.Nombre_Autor, new { @class = "form-control" })
+                <p>@Html.ValidationMessage("Nombre_Autor", new { @class = "text-danger" })</p>
+            </div>
+
+            <div>
+                @Html.LabelFor(p => p.Anio_Publicacion)
+                @Html.EditorFor(p => p.Anio_Publicacion, new { htmlAttribute = new { @class = "form-control" } })
+                @Html.ValidationMessage("Anio_Publicacion", new { @class = "text-danger" })
+            </div>
+
+            <div>
+                @Html.LabelFor(p => p.Edicion)
+                @Html.TextBoxFor(p => p.Edicion, null, new { @class = "form-control" })
+                @Html.ValidationMessage("Edicion", new { @class = "text-danger" })
+            </div>
+
+            <div>
+                @Html.LabelFor(p => p.IDCategoria)
+                @Html.DropDownList("IDCategoria", categorias, null, new { @class = "form-control" })
+                @Html.ValidationMessageFor(p => p.IDCategoria, "", new { @class = "text-danger" })
+            </div>
+
+            <div style="margin-top:10px;">
+                @Html.LabelFor(p => p.Cantidad)
+                @Html.TextBoxFor(p => p.Cantidad, new { htmlAttribute = new { @class = "form-control" } })
+            </div>
+
+            <div style="margin-top:10px;">
+                @Html.LabelFor(p => p.Ubicacion)
+                @Html.TextBoxFor(p => p.Ubicacion, new { htmlAttribute = new { @class = "form-control" } })
+                <p>@Html.ValidationMessage("Ubicacion", new { @class = "text-danger" })</p>
+            </div>
+
+            <div style="margin-top:10px;">
+                @Html.LabelFor(p => p.Fecha_Registro)
+                @Html.EditorFor(p => p.Fecha_Registro, new { htmlAttribute = new { @class = "form-control" } })
+                <p>@Html.ValidationMessage("Fecha_Registro", new { @class = "text-danger" })</p>
+            </div>
+
+            <br />
+            <div style="margin:auto;">
+                <button type="submit" class="btn btn-primary" , onclick="editar()">
+                    Guardar
+                </button>
+                @Html.ActionLink("Regresar", "Index", "Libro", null, new { @class = "btn btn-danger" })
+            </div>
+
+        }
+    </div>
+</div>
+
+<script>
+    function editar() {
+        if (confirm("¿Deseas guardar los cambios?")) {
+            alert("Informacion actualizada");
+        } else {
+            event.preventDefault();
+        }
+    }
+
+    function regresar() {
+        if (confirm("¿Desea cancelar los cambios?") == 1) {
+            alert("Cambios no registrados");
+        } else {
+            event.preventDefault();
+        }
+    }
+</script>
+

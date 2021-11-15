@@ -1,0 +1,108 @@
+﻿@using Biblioteca.DTOS
+@model IEnumerable<LibroDTO>
+@{
+    ViewBag.Title = "Buscar";
+}
+
+<h2 style="text-align:center;margin-bottom:50px;">Biblioteca Digital</h2>
+
+
+@using (Html.BeginForm("Buscar", "Buscar", FormMethod.Post))
+{
+
+    <div style="width:100%;display:flex;justify-content:center;margin-bottom:50px;">
+
+        @Html.TextBox("Titulo_Autor")
+        <input type="submit" class="btn btn-group" value="Buscar" />
+
+    </div>
+
+    <div>
+        @if (Model != null && Model.Count() == 0)
+        {
+            <p style="text-align:center;">@Html.Label("El libro no se encuentra en el catalago", new { @class = "text-danger", @id = "msjError" })</p>
+        }
+    </div>
+
+    <table class="table">
+        <tr>
+
+            <th>
+                @Html.DisplayNameFor(model => model.ID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Titulo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre_Autor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Anio_Publicacion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Edicion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.lenguaje)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.categoria_Libro)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Disponibles)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ubicacion)
+            </th>
+            @if (Session["Usuario"] != null)
+            {
+                <th>
+                    Prestamo
+                </th>
+            }
+
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.ID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Titulo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nombre_Autor)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Anio_Publicacion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Edicion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.lenguaje)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.categoria_Libro)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Disponibles)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Ubicacion)
+                </td>
+
+                @if (Session["Usuario"] != null)
+                {
+                    <td>
+                        @Html.ActionLink(" ", "Prestamo", "Prestamo", new { id = @item.ID }, new { @class = "glyphicon glyphicon-book btn btn-primary" })
+                    </td>
+                }
+            </tr>
+        }
+    </table>
+}
+
