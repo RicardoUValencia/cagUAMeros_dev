@@ -11,7 +11,11 @@ namespace Biblioteca.Models
         public int LibroID { get; set; }
         public int UsuarioID { get; set; }
         public DateTime Fecha_Prestamo { get; set; }
+
+        //Revisar este campo. 
         public DateTime Fecha_Devolucion { get; set; }
+
+        //Revisar este campo. 
         public int Cantidad { get; set; }
         public int P_Habilitado { get; set; }
         public virtual Libro Libro { get; set; }
