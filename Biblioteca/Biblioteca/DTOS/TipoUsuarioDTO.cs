@@ -13,4 +13,5 @@ namespace Biblioteca.DTOS
         public string Tipo_Usuario { get; set; }
         public int U_habilitado { get; set; }
     }
+
 }

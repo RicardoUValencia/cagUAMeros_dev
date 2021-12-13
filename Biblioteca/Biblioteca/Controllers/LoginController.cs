@@ -11,6 +11,8 @@ using System.Web.Mvc;
 
 namespace Biblioteca.Controllers
 {
+    //[HttpPost]
+    //[Authorize(Roles = "Administrador")]
     public class LoginController : Controller
     {
         private ApplicationDBContext bd;
@@ -69,15 +71,15 @@ namespace Biblioteca.Controllers
                         else
                         {
                             UsuarioDTO administrador = (from a in bd.Usuarios
-                                                       join u in bd.TipoUsuarios
-                                                       on a.TipoUsuarioID equals u.ID
-                                                       where a.U_Habilitado == 1
-                                                       && u.Tipo_Usuario.Equals("Administrador")
-                                                       select new UsuarioDTO
-                                                       {
-                                                           Nombre = a.Nombre,
-                                                           Tipo_Usuario = u.Tipo_Usuario
-                                                       }).First();
+                                                        join u in bd.TipoUsuarios
+                                                        on a.TipoUsuarioID equals u.ID
+                                                        where a.U_Habilitado == 1
+                                                        && u.Tipo_Usuario.Equals("Administrador")
+                                                        select new UsuarioDTO
+                                                        {
+                                                            Nombre = a.Nombre,
+                                                            Tipo_Usuario = u.Tipo_Usuario
+                                                        }).First();
 
                             Session["Administrador"] = administrador;
                         }
@@ -110,5 +112,6 @@ namespace Biblioteca.Controllers
             }
             return RedirectToAction("Index", "Home");
         }
+
     }
 }

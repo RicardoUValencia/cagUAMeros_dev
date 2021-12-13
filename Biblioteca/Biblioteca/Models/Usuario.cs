@@ -18,5 +18,15 @@ namespace Biblioteca.Models
         public string Password { get; set; }
         public int U_Habilitado { get; set; }//Indica si el usuario esta activo
         public TipoUsuario TipoUsuario { get; set; }
+
+        //Garantizará que el usuario tenga que iniciar sesión y se le asigne el rol de Administrador para poder ver la página.
+        //public Usuario[] Administrador { get; set; }
+        //public Usuario[] Everyone { get; set; }
+
+        internal Usuario Obtener(object p)
+        {
+            throw new NotImplementedException();
+        }
     }
+
 }

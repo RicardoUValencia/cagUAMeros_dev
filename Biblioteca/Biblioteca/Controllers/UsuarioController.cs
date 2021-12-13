@@ -1,4 +1,5 @@
-﻿using Biblioteca.DBContext;
+﻿using Amazon.Auth.AccessControlPolicy;
+using Biblioteca.DBContext;
 using Biblioteca.DTOS;
 using Biblioteca.Filters;
 using Biblioteca.Models;
@@ -13,11 +14,14 @@ using System.Web.Mvc;
 
 namespace Biblioteca.Controllers
 {
+   
     //[Admin]
     public class UsuarioController : Controller
     {
+ 
         private ApplicationDBContext bd;
         // GET: Usuario
+    
         public ActionResult Index(UsuarioDTO alumnoDTO)
         {
             List<UsuarioDTO> alumnos = null;
@@ -107,10 +111,12 @@ namespace Biblioteca.Controllers
                     }
                 }
 
-
             }
+            
+            
             return View(alumnos);
         }
+
 
         [HttpGet]
         public ActionResult Agregar()
@@ -178,8 +184,9 @@ namespace Biblioteca.Controllers
                         bd.Usuarios.Add(al);
                         bd.SaveChanges();
                     }
+                    
+                    }
 
-                }
             }
             catch (Exception ex)
             {
@@ -252,20 +259,64 @@ namespace Biblioteca.Controllers
         public void listaTipoUsuario()
         {
             List<SelectListItem> tipoUsuarios;
+           
 
-            using (bd = new ApplicationDBContext())
+
+            if (Session["Administrador"] != null)
             {
-                tipoUsuarios = (from u in bd.TipoUsuarios
-                                where u.U_habilitado == 1
-                                select new SelectListItem
-                                {
-                                    Text = u.Tipo_Usuario,
-                                    Value = u.ID.ToString()
-                                }).ToList();
+                using (bd = new ApplicationDBContext())
+                {
+
+
+                    tipoUsuarios = (from u in bd.TipoUsuarios
+                                     where u.U_habilitado == 1
+                                     select new SelectListItem
+                                     {
+                                         Text = u.Tipo_Usuario,
+                                         Value = u.ID.ToString()
+                                     }).ToList();
+
+
+                    tipoUsuarios.Where(x => x.Value.Equals("1") && x.Value.Equals("2")).ToList();
+
+                }
+                tipoUsuarios.Insert(0, new SelectListItem { Text = "--Seleccione--", Value = "" });
+                ViewBag.usuarios = tipoUsuarios;
             }
 
-            tipoUsuarios.Insert(0, new SelectListItem { Text = "--Seleccione--", Value = "" });
-            ViewBag.usuarios = tipoUsuarios;
+            if (Session["Bibliotecario"] != null)
+            {
+                List<SelectListItem> tipoUsuarios1;
+                using (bd = new ApplicationDBContext())
+                {
+                    tipoUsuarios = (from u in bd.TipoUsuarios
+                                        where u.U_habilitado == 1
+                                        && u.ID == 1
+                                        
+                                        select new SelectListItem
+                                        {
+                                            Text = u.Tipo_Usuario,
+                                            Value = u.ID.ToString()
+                                        }).ToList();
+
+                    tipoUsuarios1 = (from u in bd.TipoUsuarios
+                                    where u.U_habilitado == 1
+                                    && u.ID == 2
+
+                                    select new SelectListItem
+                                    {
+                                        Text = u.Tipo_Usuario,
+                                        Value = u.ID.ToString()
+                                    }).ToList();
+
+                    tipoUsuarios.Add(tipoUsuarios1.First());
+                }
+
+                tipoUsuarios.Insert(0, new SelectListItem { Text = "--Seleccione--", Value = "" });
+                ViewBag.usuarios = tipoUsuarios;
+
+            }
         }
     }
+
 }
