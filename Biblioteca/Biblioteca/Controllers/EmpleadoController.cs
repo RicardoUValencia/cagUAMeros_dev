@@ -13,7 +13,7 @@ using System.Web.Mvc;
 
 namespace Biblioteca.Controllers
 {
-    //[Acceder]
+    [Acceder]
     public class EmpleadoController : Controller
     {
         private ApplicationDBContext bd;

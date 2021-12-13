@@ -13,11 +13,11 @@ using System.Web.Mvc;
 
 namespace Biblioteca.Controllers
 {
-    //[Admin]
+    [Admin]
     public class UsuarioController : Controller
     {
         private ApplicationDBContext bd;
-        // GET: Usuario
+        //GET: Usuario
         public ActionResult Index(UsuarioDTO alumnoDTO)
         {
             List<UsuarioDTO> alumnos = null;
