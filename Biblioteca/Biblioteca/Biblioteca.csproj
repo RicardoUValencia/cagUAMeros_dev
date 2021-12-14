@@ -142,6 +142,7 @@
     <Compile Include="DTOS\CategoriaDTO.cs" />
     <Compile Include="DTOS\LibroDTO.cs" />
     <Compile Include="DTOS\PrestamoDTO.cs" />
+    <Compile Include="DTOS\SugerenciaDTO.cs" />
     <Compile Include="DTOS\TipoUsuarioDTO.cs" />
     <Compile Include="DTOS\UsuarioDTO.cs" />
     <Compile Include="Filters\Acceder.cs" />
@@ -161,10 +162,15 @@
     <Compile Include="Migrations\202110171903341_Prestamos.designer.cs">
       <DependentUpon>202110171903341_Prestamos.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202112132231074_Sugerencias.cs" />
+    <Compile Include="Migrations\202112132231074_Sugerencias.designer.cs">
+      <DependentUpon>202112132231074_Sugerencias.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Categoria.cs" />
     <Compile Include="Models\Libro.cs" />
     <Compile Include="Models\Prestamo.cs" />
+    <Compile Include="Models\Sugenrencia.cs" />
     <Compile Include="Models\TipoUsuario.cs" />
     <Compile Include="Models\Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -250,6 +256,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202110171903341_Prestamos.resx">
       <DependentUpon>202110171903341_Prestamos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202112132231074_Sugerencias.resx">
+      <DependentUpon>202112132231074_Sugerencias.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

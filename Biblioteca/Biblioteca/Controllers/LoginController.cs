@@ -96,6 +96,8 @@ namespace Biblioteca.Controllers
             return RedirectToAction("Index", "Home");
         }//Fin login
 
+
+
         public ActionResult CerrarSesion()
         {
             if (Session["Usuario"] != null)
@@ -112,6 +114,40 @@ namespace Biblioteca.Controllers
             }
             return RedirectToAction("Index", "Home");
         }
+<<<<<<< HEAD
+=======
+        public ActionResult Perfil()
+        {
+
+            if (Session["Usuario"] == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            var user = (Usuario)Session["Usuario"];
+            var nuevoUsuario = new Usuario();
+            using (bd = new ApplicationDBContext())
+            {
+                nuevoUsuario = bd.Usuarios.Where(i => i.ID.Equals(user.ID)).First();
+            }
+            user = nuevoUsuario;
+            UsuarioDTO usuario = new UsuarioDTO
+            {
+                Direccion = user.Direccion,
+                Email = user.Email,
+                Fecha_Nacimiento = user.Fecha_Nacimiento,
+                ID = user.ID,
+                Fecha_Registro = user.Fecha_Registro,
+                Nombre = user.Nombre,
+                Telefono = user.Telefono
+
+
+            };
+
+            return View(usuario);
+        }
+
+
+>>>>>>> f97e51905aded73306ea82acca14d79cb3303a12
 
     }
 }

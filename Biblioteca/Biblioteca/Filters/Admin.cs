@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Collections;
 
 namespace Biblioteca.Filters
 {
@@ -17,12 +18,41 @@ namespace Biblioteca.Filters
             {
                 filterContext.Result = new RedirectResult("~/Home/Index");
             }
-            else if (admin == null)
+            if (admin != null)
             {
-                filterContext.Result = new RedirectResult("~/Login/Index");
+
+            }
+
+            if (bibliotecario != null)
+            {
+
             }
 
             base.OnActionExecuting(filterContext);
         }
     }
+
+   /* public class Acceder : ActionFilterAttribute
+    {
+        public override void OnActionExecuted(ActionExecutedContext filterContext)
+        {
+            var admin = HttpContext.Current.Session["Administrador"];
+            var bibliotecario = HttpContext.Current.Session["Bibliotecario"];
+
+            if (admin == null && bibliotecario == null) 
+            {
+                filterContext.Result = new RedirectResult("~/Home/Index");
+            }
+            if (admin != null)
+            { 
+            }
+
+            if (admin != null)
+            { 
+            }
+
+            base.OnActionExecuted(filterContext);
+        }
+    }*/
 }
+   

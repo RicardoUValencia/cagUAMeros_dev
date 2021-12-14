@@ -10,7 +10,7 @@ using System.Web.Mvc;
 
 namespace Biblioteca.Controllers
 {
-    //[Admin]
+    [Admin]
     public class PrestamoController : Controller
     {
         private ApplicationDBContext bd;

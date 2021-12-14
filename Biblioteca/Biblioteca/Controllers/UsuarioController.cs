@@ -20,10 +20,19 @@ namespace Biblioteca.Controllers
     {
  
         private ApplicationDBContext bd;
+<<<<<<< HEAD
         // GET: Usuario
     
+=======
+        //GET: Usuario
+        [Admin]
+>>>>>>> f97e51905aded73306ea82acca14d79cb3303a12
         public ActionResult Index(UsuarioDTO alumnoDTO)
         {
+            if (Session["Usuario"] != null)
+            {
+                return RedirectToAction("Perfil", "Login");
+            }
             List<UsuarioDTO> alumnos = null;
             List<UsuarioDTO> profesores = null;
             string nombre = alumnoDTO.Nombre;
@@ -117,7 +126,11 @@ namespace Biblioteca.Controllers
             return View(alumnos);
         }
 
+<<<<<<< HEAD
 
+=======
+        [Admin]
+>>>>>>> f97e51905aded73306ea82acca14d79cb3303a12
         [HttpGet]
         public ActionResult Agregar()
         {
@@ -125,6 +138,7 @@ namespace Biblioteca.Controllers
             return View();
         }
 
+        [Admin]
         [HttpPost]
         public ActionResult Agregar(UsuarioDTO alumno)
         {
@@ -157,7 +171,7 @@ namespace Biblioteca.Controllers
                     //}
                     #endregion
 
-                    cantidad = bd.Usuarios.Where(n => n.Nombre.Equals(alumno.Nombre)).Count();
+                    cantidad = bd.Usuarios.Where(n => n.Email.Equals(alumno.Email)).Count();
 
                     if (cantidad >= 1)
                     {
@@ -262,6 +276,10 @@ namespace Biblioteca.Controllers
            
 
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> f97e51905aded73306ea82acca14d79cb3303a12
             if (Session["Administrador"] != null)
             {
                 using (bd = new ApplicationDBContext())
@@ -269,12 +287,21 @@ namespace Biblioteca.Controllers
 
 
                     tipoUsuarios = (from u in bd.TipoUsuarios
+<<<<<<< HEAD
                                      where u.U_habilitado == 1
                                      select new SelectListItem
                                      {
                                          Text = u.Tipo_Usuario,
                                          Value = u.ID.ToString()
                                      }).ToList();
+=======
+                                    where u.U_habilitado == 1
+                                    select new SelectListItem
+                                    {
+                                        Text = u.Tipo_Usuario,
+                                        Value = u.ID.ToString()
+                                    }).ToList();
+>>>>>>> f97e51905aded73306ea82acca14d79cb3303a12
 
 
                     tipoUsuarios.Where(x => x.Value.Equals("1") && x.Value.Equals("2")).ToList();
@@ -290,6 +317,7 @@ namespace Biblioteca.Controllers
                 using (bd = new ApplicationDBContext())
                 {
                     tipoUsuarios = (from u in bd.TipoUsuarios
+<<<<<<< HEAD
                                         where u.U_habilitado == 1
                                         && u.ID == 1
                                         
@@ -302,6 +330,10 @@ namespace Biblioteca.Controllers
                     tipoUsuarios1 = (from u in bd.TipoUsuarios
                                     where u.U_habilitado == 1
                                     && u.ID == 2
+=======
+                                    where u.U_habilitado == 1
+                                    && u.ID == 1
+>>>>>>> f97e51905aded73306ea82acca14d79cb3303a12
 
                                     select new SelectListItem
                                     {
@@ -309,6 +341,19 @@ namespace Biblioteca.Controllers
                                         Value = u.ID.ToString()
                                     }).ToList();
 
+<<<<<<< HEAD
+=======
+                    tipoUsuarios1 = (from u in bd.TipoUsuarios
+                                     where u.U_habilitado == 1
+                                     && u.ID == 2
+
+                                     select new SelectListItem
+                                     {
+                                         Text = u.Tipo_Usuario,
+                                         Value = u.ID.ToString()
+                                     }).ToList();
+
+>>>>>>> f97e51905aded73306ea82acca14d79cb3303a12
                     tipoUsuarios.Add(tipoUsuarios1.First());
                 }
 

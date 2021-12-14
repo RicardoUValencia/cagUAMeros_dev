@@ -53,6 +53,11 @@
                     {
                         <li>@Html.ActionLink("Login", "Index", "Login")</li>
                     }
+                    @if (Session["Usuario"] != null)
+                    {
+                        <li>@Html.ActionLink("Perfil", "Perfil", "Login")</li>
+                    }
+
 
                 </ul>
             </div>

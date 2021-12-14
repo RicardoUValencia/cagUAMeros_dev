@@ -13,9 +13,12 @@ namespace Biblioteca.Filters
             var bibliotecario = HttpContext.Current.Session["Bibliotecario"];
             var admin = HttpContext.Current.Session["Administrador"];
 
-            if (admin == null && bibliotecario == null)
+            if (admin == null)
+                {
+                filterContext.Result = new RedirectResult("~/Home/Index");
+            }
+            if (admin != null)
             {
-                filterContext.Result = new RedirectResult("~/Login/Index");
             }
 
             base.OnActionExecuting(filterContext);
