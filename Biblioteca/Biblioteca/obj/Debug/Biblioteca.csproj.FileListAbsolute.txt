@@ -280,3 +280,4 @@ C:\Users\Eduardo\Desktop\caguameros\cagUAMeros_dev\Biblioteca\Biblioteca\obj\Deb
 C:\Users\Eduardo\Desktop\caguameros\cagUAMeros_dev\Biblioteca\Biblioteca\obj\Debug\Biblioteca.csproj.CopyComplete
 C:\Users\Eduardo\Desktop\caguameros\cagUAMeros_dev\Biblioteca\Biblioteca\obj\Debug\Biblioteca.dll
 C:\Users\Eduardo\Desktop\caguameros\cagUAMeros_dev\Biblioteca\Biblioteca\obj\Debug\Biblioteca.pdb
+C:\Users\Eduardo\Desktop\caguameros\cagUAMeros_dev\Biblioteca\Biblioteca\obj\Debug\Biblioteca.Migrations.Sugerencias.resources
