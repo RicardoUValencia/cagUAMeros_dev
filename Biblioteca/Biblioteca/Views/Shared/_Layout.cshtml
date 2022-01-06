@@ -47,7 +47,7 @@
                     @if (Session["Administrador"] != null || Session["Bibliotecario"] != null || Session["Usuario"] != null)
                     {
                         <li>@Html.ActionLink("Cerrar sesión", "CerrarSesion", "Login")</li>
-                        @*<li>@Html.ActionLink("Perfil", "Perfil", "Login")</li>*@
+                        <li>@Html.ActionLink("Perfil", "Perfil", "Login")</li>
                     }
                     else
                     {

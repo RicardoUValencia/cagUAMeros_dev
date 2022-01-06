@@ -151,7 +151,7 @@ namespace Biblioteca.Controllers
                     //}
                     #endregion
 
-                    cantidad = bd.Usuarios.Where(n => n.Nombre.Equals(alumno.Nombre)).Count();
+                    cantidad = bd.Usuarios.Where(n => n.Email.Equals(alumno.Email)).Count();
 
                     if (cantidad >= 1)
                     {

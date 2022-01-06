@@ -69,15 +69,15 @@ namespace Biblioteca.Controllers
                         else
                         {
                             UsuarioDTO administrador = (from a in bd.Usuarios
-                                                       join u in bd.TipoUsuarios
-                                                       on a.TipoUsuarioID equals u.ID
-                                                       where a.U_Habilitado == 1
-                                                       && u.Tipo_Usuario.Equals("Administrador")
-                                                       select new UsuarioDTO
-                                                       {
-                                                           Nombre = a.Nombre,
-                                                           Tipo_Usuario = u.Tipo_Usuario
-                                                       }).First();
+                                                        join u in bd.TipoUsuarios
+                                                        on a.TipoUsuarioID equals u.ID
+                                                        where a.U_Habilitado == 1
+                                                        && u.Tipo_Usuario.Equals("Administrador")
+                                                        select new UsuarioDTO
+                                                        {
+                                                            Nombre = a.Nombre,
+                                                            Tipo_Usuario = u.Tipo_Usuario
+                                                        }).First();
 
                             Session["Administrador"] = administrador;
                         }
@@ -93,6 +93,8 @@ namespace Biblioteca.Controllers
 
             return RedirectToAction("Index", "Home");
         }//Fin login
+
+
 
         public ActionResult CerrarSesion()
         {
@@ -110,5 +112,37 @@ namespace Biblioteca.Controllers
             }
             return RedirectToAction("Index", "Home");
         }
+        public ActionResult Perfil()
+        {
+
+            if (Session["Usuario"] == null)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            var user = (Usuario)Session["Usuario"];
+            var nuevoUsuario = new Usuario();
+            using (bd = new ApplicationDBContext())
+            {
+                nuevoUsuario = bd.Usuarios.Where(i => i.ID.Equals(user.ID)).First();
+            }
+            user = nuevoUsuario;
+            UsuarioDTO usuario = new UsuarioDTO
+            {
+                Direccion = user.Direccion,
+                Email = user.Email,
+                Fecha_Nacimiento = user.Fecha_Nacimiento,
+                ID = user.ID,
+                Fecha_Registro = user.Fecha_Registro,
+                Nombre = user.Nombre,
+                Telefono = user.Telefono
+
+
+            };
+
+            return View(usuario);
+        }
+
+
+
     }
 }
