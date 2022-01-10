@@ -41,7 +41,7 @@ namespace Biblioteca.DTOS
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime Fecha_Registro { get; set; }
 
-        [Required]
+        
         [Display(Name = "Contraseña")]
         [MinLength(8, ErrorMessage = "La longitud minima son 8 caracteres")]
         public string Password { get; set; }
@@ -51,6 +51,8 @@ namespace Biblioteca.DTOS
         public string Tipo_Usuario { get; set; }//Muestra el nombre de tipo usuario
         public string mensaje { get; set; }
         public string Puesto { get; set; }
+        public List<PrestamoDTO> prestamos { get; set; }
         #endregion
+        
     }
 }

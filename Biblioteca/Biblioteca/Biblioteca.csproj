@@ -225,6 +225,7 @@
     <Content Include="Views\Empleado\Agregar.cshtml" />
     <Content Include="Views\Empleado\Editar.cshtml" />
     <Content Include="Views\Prestamo\Index.cshtml" />
+    <Content Include="Views\Login\Perfil.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

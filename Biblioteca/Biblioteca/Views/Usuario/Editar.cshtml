@@ -45,14 +45,17 @@
                 @Html.LabelFor(p => p.Fecha_Nacimiento)
                 @Html.EditorFor(p => p.Fecha_Nacimiento, new { htmlAttribute = new { @class = "form-control" } })
                 <p>@Html.ValidationMessage("Fecha_Nacimiento", new { @class = "text-danger" })</p>
-            </div>
+            </div><br /><div style="margin:auto;">
 
-            <br />
-            <div style="margin:auto;">
+
                 <button type="submit" class="btn btn-primary" onclick="editar()">
                     Guardar
+
                 </button>
                 @Html.ActionLink("Regresar", "Index", "Usuario", null, new { @class = "btn btn-danger", @Onclick = "regresar()" })
+
+
+
             </div>
 
         }

@@ -1,4 +1,5 @@
 ﻿@using Biblioteca.DTOS
+
 @model UsuarioDTO
 @{
     ViewBag.Title = "Perfil";
@@ -45,37 +46,38 @@
             font-size: 50px;
             text-align: center;
         }
-        .user-information{
+
+        .user-information {
             margin-bottom: 20px;
             background-color: lightgray;
-            border-radius:10px;
-            
-            
+            border-radius: 10px;
         }
-        .edit-information{
-            margin-bottom:20px;
-            align-content:center;
+
+        .edit-information {
+            margin-bottom: 20px;
+            align-content: center;
         }
+
         .prestamos {
             margin-top: 20px;
             background-color: lightgray;
-            border-radius:10px;
-            padding-bottom:20px;
-            
-            
+            border-radius: 10px;
+            padding-bottom: 20px;
         }
-        .prestamos-table{
-            margin-top:0px;
 
-            background-color:lightgray ;
+        .prestamos-table {
+            margin-top: 0px;
+            background-color: lightgray;
         }
+
         .news {
             margin-bottom: 100px;
             background-color: #383837;
             color: white;
             padding-bottom: 100px;
-            border-radius:10px
+            border-radius: 10px
         }
+
         .table-top {
             padding-top: 12px;
             padding-bottom: 12px;
@@ -83,22 +85,20 @@
             background-color: gray;
             color: white;
         }
-        .prestamos-image{
-            width:50px;
-            height:50px;
-        }
-        .btn {
-            color: #680606;
-            
-            
+
+        .prestamos-image {
+            width: 50px;
+            height: 50px;
         }
 
-        
+        .btn {
+            color: #680606;
+        }
     </style>
 </head>
 <body>
-    
-    <div class="Contenedor" >
+
+    <div class="Contenedor">
         <div class="row profile">
             <!--Parte de la izquierda(columna)-->
             <div class="col-md-3">
@@ -113,13 +113,14 @@
                     <div class="news ">
                         <article class="news col-md-12  ">
                             <h2>Avisos <img class="prestamos-image" src="~/Img/megaphone.png" /> </h2>
-                            <p>La biblioteca digital esta encantada de apoyar tu desarrollo académico.Es por ello que te recordamos:
-                                <br />-No olvides regresar los libros antes de la fecha limite para evitar cobros 
+                            <p>
+                                La biblioteca digital esta encantada de apoyar tu desarrollo académico.Es por ello que te recordamos:
+                                <br />-No olvides regresar los libros antes de la fecha limite para evitar cobros
                                 <br />-Cuida los libros, otros estudiantes tambien los usarán
                                 <br />-NO escribas sobre los libros
                                 <br />-No puedes tomar dos ejemplares iguales
                                 <br />-En caso de extraviar un libro, deberás cubrir el costo total de este
-                                
+
                             </p>
                         </article>
                     </div>
@@ -143,12 +144,12 @@
 
                     </div>
                 </article>
-                 <article class="col-md-12">
-                     <!--division que se encarga de mostrar los prestamos, aun no se implementará-->
+                <article class="col-md-12">
+                    <!--division que se encarga de mostrar los prestamos, aun no se implementará-->
                     <div class="prestamos">
                         <h2>Prestamos <img class="prestamos-image" src="~/Img/book.png" /> </h2>
                         <table class="prestamos-table col-md-12">
-                            
+
                             <tr class="table-top">
                                 <th>id</th>
                                 <th>Titulo libro</th>
@@ -156,29 +157,41 @@
                                 <th>Fecha de devolución</th>
 
                             </tr>
-                            <tr>
-                                <td>1</td>
-                            </tr>
-                            <tr>
-                                <td>1</td>
-                            </tr>
-                            <tr>
-                                <td>1</td>
-                            </tr>
+                            @foreach (var item in Model.prestamos)
+                            {
+                                <tr>
+                                    <td>
+                                        @Html.DisplayFor(modelItem =>item.LibroID)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem =>item.tituloLibro )
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Fecha_Prestamo)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Fecha_Devolucion)
+                                    </td>
+                                   
+
+                                    
+                                </tr>
+                            }
+
                         </table>
-                        
+
                     </div>
-                 </article>
+                </article>
 
             </div>
         </div>
-           
-           
 
-       
 
-        
-        
+
+
+
+
+
     </div>
 
 
@@ -190,4 +203,5 @@
 </body>
 
 </html>
+
 

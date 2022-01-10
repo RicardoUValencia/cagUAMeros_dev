@@ -139,6 +139,28 @@ namespace Biblioteca.Controllers
 
             };
 
+            //tabla de prestamos
+            List<PrestamoDTO> prestamos = null;
+            var nombreUsuario = usuario.Nombre;
+            using(bd = new ApplicationDBContext())
+            {
+                prestamos = (from p in bd.Prestamos
+                             join u in bd.Usuarios
+                             on p.UsuarioID equals u.ID
+                             join l in bd.Libros on p.LibroID equals l.ID
+                             where u.Nombre.Contains(nombreUsuario)
+                             select new PrestamoDTO
+                             {
+                                 ID = p.ID,
+                                 nombreUsuario = u.Nombre,
+                                 tituloLibro = l.Titulo,
+                                 Fecha_Devolucion = p.Fecha_Devolucion,
+                                 Fecha_Prestamo = p.Fecha_Prestamo
+
+                             }).ToList();
+            }
+            usuario.prestamos = prestamos;
+
             return View(usuario);
         }
 
