@@ -42,21 +42,23 @@
 
                     <li>@Html.ActionLink("Acerca de", "About", "Home")</li>
                     <li>@Html.ActionLink("Contacto", "Contact", "Home")</li>
+                    @if (Session["Usuario"] != null)
+                    {
+                        <li>@Html.ActionLink("Perfil", "Perfil", "Login")</li>
+                    }
                     @*Cerrar sesion*@
 
                     @if (Session["Administrador"] != null || Session["Bibliotecario"] != null || Session["Usuario"] != null)
                     {
-                        <li>@Html.ActionLink("Cerrar sesión", "CerrarSesion", "Login")</li>
                         @*<li>@Html.ActionLink("Perfil", "Perfil", "Login")</li>*@
+                        <li>@Html.ActionLink("Cerrar sesión", "CerrarSesion", "Login")</li>
+                        @**@
                     }
                     else
                     {
                         <li>@Html.ActionLink("Login", "Index", "Login")</li>
                     }
-                    @if (Session["Usuario"] != null)
-                    {
-                        <li>@Html.ActionLink("Perfil", "Perfil", "Login")</li>
-                    }
+
 
 
                 </ul>

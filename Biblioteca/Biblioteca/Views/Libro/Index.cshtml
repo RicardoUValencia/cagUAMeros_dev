@@ -8,6 +8,7 @@
 
 <p>
     @Html.ActionLink("Agregar", "Agregar", "Libro", null, new { @class = "btn btn-primary" })
+   
 </p>
 
 @using (Html.BeginForm("Index", "Libro", FormMethod.Post, new { @id = "frmFiltro" }))
@@ -49,20 +50,6 @@
                 Operaciones
             </th>
         </tr>
-        <tr>
-            <td></td>
-            <td>@Html.TextBox("Titulo", null, new { @class = "form-control" })</td>
-            <td>@Html.TextBox("Nombre_Autor", null, new { @class = "form-control" })</td>
-            <td></td>
-            <td></td>
-            <td>@Html.TextBox("lenguaje", null, new { @class = "form-control" })</td>
-            <td>@Html.TextBox("categoria_Libro", null, new { @class = "form-control" })</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-
         @foreach (var item in Model)
         {
             <tr>

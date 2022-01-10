@@ -1,0 +1,151 @@
+﻿@using Biblioteca.DTOS
+@model IEnumerable<LibroDTO>
+@{
+    ViewBag.Title = "BusquedaAvanzada";
+}
+
+<h2>Busqueda avanzada</h2>
+
+<p>
+    Aquí podrás realizar una búsqueda avanzada en caso de que no hayas encontrado el libro que buscabas.
+</p>
+
+@using (Html.BeginForm("BusquedaAvanzada", "Libro", FormMethod.Post, new { @id = "frmFiltro" }))
+{
+    <table class="table">
+        <tr>
+
+            <th>
+                @Html.DisplayNameFor(model => model.ID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Titulo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre_Autor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Anio_Publicacion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Edicion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.lenguaje)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.categoria_Libro)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Disponibles)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ubicacion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Fecha_Registro)
+            </th>
+            @if (Session["Usuario"] != null)
+            {
+                <th>
+                    Operaciones
+                </th>
+            }
+            
+        </tr>
+        <tr>
+            <td></td>
+            <td>@Html.TextBox("Titulo", null, new { @class = "form-control" })</td>
+            <td>@Html.TextBox("Nombre_Autor", null, new { @class = "form-control" })</td>
+            <td>@Html.TextBox("Anio_Publicacion", null, new { @class = "form-control" })</td>
+            <td>@Html.TextBox("Edicion", null, new { @class = "form-control" })</td>
+            <td>@Html.TextBox("lenguaje", null, new { @class = "form-control" })</td>
+            <td>@Html.TextBox("categoria_Libro", null, new { @class = "form-control" })</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+    <tr>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.ID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Titulo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nombre_Autor)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Anio_Publicacion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Edicion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.lenguaje)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.categoria_Libro)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Disponibles)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Ubicacion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Fecha_Registro)
+        </td>
+
+        @if (Session["Usuario"] != null)
+        {
+            <td>
+                @Html.ActionLink(" ", "Prestamo", "Prestamo", new { id = @item.ID }, new { @class = "glyphicon glyphicon-book btn btn-primary" })
+            </td>
+        }
+    </tr>
+        }
+
+    </table>
+}
+
+<script>
+
+    let Titulo = document.getElementById("Titulo");
+    let Nombre_Autor = document.getElementById("Nombre_Autor");
+    let lenguaje = document.getElementById("lenguaje");
+    let categoria_Libro = document.getElementById("categoria_Libro");
+    let frmFiltro = document.getElementById("frmFiltro");
+    let Anio_Publicacion = document.getElementById("Anio_Publicacion");
+    let Edicion = document.getElementById("Edicion");
+
+    Titulo.onkeyup = function () {
+        frmFiltro.submit();
+    }
+
+    Nombre_Autor.onkeyup = function () {
+        frmFiltro.submit();
+    }
+
+    lenguaje.onkeyup = function () {
+        frmFiltro.submit();
+    }
+
+    categoria_Libro.onkeyup = function () {
+        frmFiltro.submit();
+    }
+
+    Anio_Publicacion.onkeyup = function () {
+        frmFiltro.submit();
+    }
+
+    Edicion.onkeyup = function () {
+        frmFiltro.submit();
+    }
+    
+</script>

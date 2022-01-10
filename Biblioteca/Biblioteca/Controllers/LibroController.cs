@@ -17,11 +17,9 @@ namespace Biblioteca.Controllers
         private ApplicationDBContext bd; 
         private LibroDTO libroDTOVal;
         // GET: Libro
-        public ActionResult Index(LibroDTO libroDTO)
+        public ActionResult Index()
         {
             List<LibroDTO> libros = null;
-            List<LibroDTO> librosFiltrados = null;
-            libroDTOVal = libroDTO;
             using (bd = new ApplicationDBContext())
             {
                 libros = (from l in bd.Libros
@@ -42,19 +40,9 @@ namespace Biblioteca.Controllers
                               Ubicacion = l.Ubicacion,
                               Edicion = l.Edicion
                           }).ToList();
-
-                if (libroDTO.Titulo == null && libroDTO.Nombre_Autor == null && libroDTO.lenguaje == null && libroDTO.categoria_Libro == null)
-                {
-                    librosFiltrados = libros;
-                }
-                else
-                {
-                    Predicate<LibroDTO> prediTitulo = new Predicate<LibroDTO>(buscarLibro);
-                    librosFiltrados = libros.FindAll(prediTitulo);
-                }
             }
 
-            return View(librosFiltrados);
+            return View(libros);
         }
 
         [HttpGet]
@@ -208,6 +196,55 @@ namespace Biblioteca.Controllers
             return RedirectToAction("Index");
         }
 
+        [HttpGet]
+        public ActionResult BusquedaAvanzada()
+        {
+            List<LibroDTO> libro = new List<LibroDTO>();
+            return View(libro);
+        }
+
+        [HttpPost]
+        public ActionResult BusquedaAvanzada(LibroDTO libroDTO)
+        {
+            List<LibroDTO> libros = null;
+            List<LibroDTO> librosFiltrados = null;
+            libroDTOVal = libroDTO;
+            using (bd = new ApplicationDBContext())
+            {
+                libros = (from l in bd.Libros
+                          join c in bd.Categorias
+                          on l.IDCategoria equals c.ID
+                          where l.L_Habilitado == 1
+                          select new LibroDTO
+                          {
+                              ID = l.ID,
+                              Nombre_Autor = l.Nombre_Autor,
+                              Titulo = l.Titulo,
+                              Cantidad = l.Cantidad,
+                              Anio_Publicacion = l.Anio_Publicacion,
+                              lenguaje = l.Idioma,
+                              categoria_Libro = c.Nombre_Categoria,
+                              Disponibles = l.Total_Actual.ToString() + "/" + l.Cantidad.ToString(),
+                              Fecha_Registro = l.Fecha_Registro,
+                              Ubicacion = l.Ubicacion,
+                              Edicion = l.Edicion
+                          }).ToList();
+
+                if (libroDTO.Titulo == null && libroDTO.Nombre_Autor == null && libroDTO.lenguaje == null 
+                    && libroDTO.categoria_Libro == null && libroDTO.Edicion == null && libroDTO.Anio_Publicacion == 0)
+                {
+                    librosFiltrados = libros;
+                }
+                else
+                {
+                    Predicate<LibroDTO> prediTitulo = new Predicate<LibroDTO>(buscarLibro);
+                    librosFiltrados = libros.FindAll(prediTitulo);
+                }
+            }
+
+            return View(librosFiltrados);
+        }
+
         public void listarCategorias()
         {
             List<SelectListItem> listaCategorias = null;
@@ -233,6 +270,8 @@ namespace Biblioteca.Controllers
             bool autorLbro = true;
             bool lenguajeLibro = true;
             bool categoriaLibro = true;
+            bool anioLibro = true;
+            bool edicionLibro = true;
 
             if (libroDTOVal.Titulo != null)
             {
@@ -254,7 +293,17 @@ namespace Biblioteca.Controllers
                 categoriaLibro = libroDTO.categoria_Libro.ToString().Contains(libroDTOVal.categoria_Libro);
             }
 
-            return (tituloLibro && autorLbro && lenguajeLibro && categoriaLibro);
+            if(libroDTOVal.Edicion != null)
+            {
+                edicionLibro = libroDTO.Edicion.ToString().Contains(libroDTOVal.Edicion);
+            }
+
+            if (libroDTOVal.Anio_Publicacion != 0)
+            {
+                anioLibro = libroDTO.Anio_Publicacion.ToString().Contains(libroDTOVal.Anio_Publicacion.ToString());
+            }
+
+            return (tituloLibro && autorLbro && lenguajeLibro && categoriaLibro && edicionLibro && anioLibro);
         }
     }
 }
