@@ -12,7 +12,9 @@
 {
 
     <div style="width:100%;display:flex;justify-content:center;">
-
+        @if(@ViewBag.mensaje != null) {
+            @ViewBag.mensaje;
+        }
         @Html.TextBox("Titulo_Autor")
         <input type="submit" class="btn btn-group" value="Buscar" />
     </div>

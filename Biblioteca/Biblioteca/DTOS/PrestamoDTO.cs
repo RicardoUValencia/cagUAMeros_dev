@@ -20,10 +20,14 @@ namespace Biblioteca.DTOS
         public virtual Usuario Usuario { get; set; }
 
         #region Propiedades extra
-        [Display(Name="Nombre usuario")]
+        [Display(Name = "Nombre usuario")]
         public string nombreUsuario { get; set; }
-        [Display(Name = "Titulo libro")]
+        [Display(Name = "Título libro")]
         public string tituloLibro { get; set; }
+        [Display(Name = "Fecha de prestamo")]
+        public string Fech_prestamo { get; set; }
+        [Display(Name = "Fecha máxima de devolución")]
+        public string Fech_devolucion { get; set; }
         #endregion
     }
 }

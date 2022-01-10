@@ -182,6 +182,9 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Img\book.png" />
+    <Content Include="Img\information.png" />
+    <Content Include="Img\megaphone.png" />
     <Content Include="Img\Sor_Juana.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -226,6 +229,7 @@
     <Content Include="Views\Empleado\Agregar.cshtml" />
     <Content Include="Views\Empleado\Editar.cshtml" />
     <Content Include="Views\Prestamo\Index.cshtml" />
+    <Content Include="Views\Login\Perfil.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

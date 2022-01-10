@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Collections;
 
 namespace Biblioteca.Filters
 {
@@ -17,12 +18,19 @@ namespace Biblioteca.Filters
             {
                 filterContext.Result = new RedirectResult("~/Home/Index");
             }
-            else if (admin == null)
+            if (admin != null)
             {
-                filterContext.Result = new RedirectResult("~/Login/Index");
+
+            }
+
+            if (bibliotecario != null)
+            {
+
             }
 
             base.OnActionExecuting(filterContext);
         }
     }
+
+    
 }

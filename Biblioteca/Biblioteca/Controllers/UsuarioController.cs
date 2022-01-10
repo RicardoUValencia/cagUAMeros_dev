@@ -17,9 +17,14 @@ namespace Biblioteca.Controllers
     public class UsuarioController : Controller
     {
         private ApplicationDBContext bd;
-        // GET: Usuario
+        //GET: Usuario
+        [Admin]
         public ActionResult Index(UsuarioDTO alumnoDTO)
         {
+            if (Session["Usuario"] != null)
+            {
+                return RedirectToAction("Perfil", "Login");
+            }
             List<UsuarioDTO> alumnos = null;
             List<UsuarioDTO> profesores = null;
             string nombre = alumnoDTO.Nombre;
@@ -112,6 +117,7 @@ namespace Biblioteca.Controllers
             return View(alumnos);
         }
 
+        [Admin]
         [HttpGet]
         public ActionResult Agregar()
         {
@@ -119,6 +125,7 @@ namespace Biblioteca.Controllers
             return View();
         }
 
+        [Admin]
         [HttpPost]
         public ActionResult Agregar(UsuarioDTO alumno)
         {
@@ -126,7 +133,7 @@ namespace Biblioteca.Controllers
 
             try
             {
-                if (!ModelState.IsValid )
+                if (!ModelState.IsValid)
                 {
                     listaTipoUsuario();
                     return View(alumno);
@@ -253,19 +260,62 @@ namespace Biblioteca.Controllers
         {
             List<SelectListItem> tipoUsuarios;
 
-            using (bd = new ApplicationDBContext())
+
+
+            if (Session["Administrador"] != null)
             {
-                tipoUsuarios = (from u in bd.TipoUsuarios
-                                where u.U_habilitado == 1
-                                select new SelectListItem
-                                {
-                                    Text = u.Tipo_Usuario,
-                                    Value = u.ID.ToString()
-                                }).ToList();
+                using (bd = new ApplicationDBContext())
+                {
+
+
+                    tipoUsuarios = (from u in bd.TipoUsuarios
+                                    where u.U_habilitado == 1
+                                    select new SelectListItem
+                                    {
+                                        Text = u.Tipo_Usuario,
+                                        Value = u.ID.ToString()
+                                    }).ToList();
+
+
+                    tipoUsuarios.Where(x => x.Value.Equals("1") && x.Value.Equals("2")).ToList();
+
+                }
+                tipoUsuarios.Insert(0, new SelectListItem { Text = "--Seleccione--", Value = "" });
+                ViewBag.usuarios = tipoUsuarios;
             }
 
-            tipoUsuarios.Insert(0, new SelectListItem { Text = "--Seleccione--", Value = "" });
-            ViewBag.usuarios = tipoUsuarios;
+            if (Session["Bibliotecario"] != null)
+            {
+                List<SelectListItem> tipoUsuarios1;
+                using (bd = new ApplicationDBContext())
+                {
+                    tipoUsuarios = (from u in bd.TipoUsuarios
+                                    where u.U_habilitado == 1
+                                    && u.ID == 1
+
+                                    select new SelectListItem
+                                    {
+                                        Text = u.Tipo_Usuario,
+                                        Value = u.ID.ToString()
+                                    }).ToList();
+
+                    tipoUsuarios1 = (from u in bd.TipoUsuarios
+                                     where u.U_habilitado == 1
+                                     && u.ID == 2
+
+                                     select new SelectListItem
+                                     {
+                                         Text = u.Tipo_Usuario,
+                                         Value = u.ID.ToString()
+                                     }).ToList();
+
+                    tipoUsuarios.Add(tipoUsuarios1.First());
+                }
+
+                tipoUsuarios.Insert(0, new SelectListItem { Text = "--Seleccione--", Value = "" });
+                ViewBag.usuarios = tipoUsuarios;
+
+            }
         }
     }
 }

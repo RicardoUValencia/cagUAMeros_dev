@@ -63,6 +63,11 @@ namespace Biblioteca.Controllers
             return View(prestamos);
         }
 
+        protected void correo(object sender, EventArgs e)
+        {
+
+        }
+
         
         public ActionResult Prestamo(int id)
         {
@@ -84,16 +89,34 @@ namespace Biblioteca.Controllers
 
                     Libro libro = bd.Libros.Where(l => l.ID.Equals(id)).FirstOrDefault();
 
-                    libro.Total_Actual = libro.Total_Actual - 1;
 
-                    bd.SaveChanges();
+                    if (libro.Total_Actual > 0)
+                    {
+                        libro.Total_Actual = libro.Total_Actual - 1;
+                        bd.SaveChanges();
+                        bd.Prestamos.Add(prestamo);
+                        bd.SaveChanges();
 
-                    bd.Prestamos.Add(prestamo);
-                    bd.SaveChanges();
+                        //aquí iria la funcion 
+
+
+                        return RedirectToAction("Index", "Buscar");
+
+                    }
+                    else
+                    {
+                        //List<PrestamoDTO> prestamos = null;
+                       
+                        ViewBag.mensaje = "El libro que solicitaste no tiene disponibilidad";
+                        return RedirectToAction("Index", "Buscar");
+                        //return View("../Views/Buscar/Index.cshtml");
+                    }
+
+                   
                 }
             }
 
-            return RedirectToAction("Index", "Buscar");
+            return RedirectToAction("Index", "Home");
         }
     }
 }
