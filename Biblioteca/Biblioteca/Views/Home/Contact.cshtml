@@ -1,53 +1,41 @@
 ﻿@using Biblioteca.DTOS
-@model SugerenciaDTO
+    @model SugerenciaDTO
 
 @{
-    ViewBag.Title = "Contact";
+   ViewBag.Title = "Contact";
 }
 
 
-<h2>Deja tus comentarios o sugerencias</h2>
+<h2>Tienes dudas, quejas y/o sugerencias?</h2>
 <br />
 <br />
 
-<div class="row">
-    <div class="col-md-6">
-        @*Accion   Controlador metodo *@
-        @using (@Html.BeginForm("Contact", "Home", FormMethod.Post, new { @id = "frmAgregar" }))
-        {
+<form method="post" action="~/Views/Home/Contact.cshtml">
+    <div>
+        <ul>
+            <h4>Dejanos tus comentarios</h4>
+            <li>
+                <label for="name">Nombre:</label>
+                <input type="text" placeholder="John Doe" required />
+            </li>
+            <li>
+                <label for="email">Email:</label>
+                <input type="email" name="email" placeholder="info@developerji.com" required />
 
-            <div>
-                @Html.LabelFor(p => p.Nombre)
-                @Html.TextBoxFor(p => p.Nombre, new { @class = "form-control" })
-                @Html.ValidationMessage("Nombre", new { @class = "text-danger" })
-            </div>
+            </li>
+            <li>
+                <p>
+                    <label for="message">Comentario</label><br />
+                    <textarea name="comentario" rows="5" cols="50">Escribe tu comentario: </textarea>
+                    
+            </li>
 
-            <div>
-                @Html.LabelFor(p => p.Email)
-                @Html.TextBoxFor(p => p.Email, new { @class = "form-control" })
-                @Html.ValidationMessage("Email", new { @class = "text-danger" })
-            </div>
-
-            <div>
-                @Html.LabelFor(p => p.Comentario)
-                <br />
-                @Html.TextAreaFor(p => p.Comentario, null)
-
-                <br />
-                @Html.ValidationMessage("Comentario", new { @class = "text-danger" })
-            </div>
-
-            <br />
-            <div style="margin:auto;">
-                <button type="submit" class="btn btn-primary" , onclick="agregar()">
-                    Enviar
-                </button>
-            </div>
-            <br />
-
-        }
+        </ul>
+        <button type="submit",onclick="agregar">
+            Enviar
+        </button>
     </div>
-</div>
+</form>
 
 <script>
     function agregar() {
@@ -58,22 +46,97 @@
     }
 </script>
 
-
-
-
-
-
-
-
-
 <address>
-    One Microsoft Way<br />
-    Redmond, WA 98052-6399<br />
-    <abbr title="Phone">P:</abbr>
-    425.555.0100
+    <br />
+    <br />
+    <strong>Tambien puedes contactarnos por telefono o correo electronico</strong>
+    <br />
+    <strong>Tel: (+521) 5643392 ext. 713</strong>
+    <br />
+    <strong>Soporte:</strong>   <a href="mailto:bidig@hotmail.com">bidig@example.com</a><br />
 </address>
+@*@<script type="text/javascript">
 
-<address>
-    <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
-    <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
-</address>
+        $(document).ready(function () {
+            $("#idFormContact").on("submit", function (e) {
+                e.preventDefault();
+                //call external service
+                var url = "/Home/Contact";
+                var formdata = (window.FormData) ? new FormData(this) : null;
+                var fdata = (formdata !== null) ? formdata : $form.serialize();
+                $("#idSubmitMvt").attr("disabled", true);
+
+                $("#idNotifSuccess").hide();
+                $("#idNotifError").hide();
+                //get authorization keys.
+                $.ajax({
+                    type: "POST",
+                    url: url,
+                    data: fdata,
+                    processData: false,
+                    contentType: false,
+                    success: function (data) {
+                        $("#idNotifSuccess").show();
+                    },
+                    error: function (xhr, ajaxOptions, thrownError) {
+                        console.log("Error");
+                        $("#idNotifError").show();
+                    }
+                });
+
+            });
+        });
+
+    </script>*@
+@*<div class="row">
+            <div class="col-md-6">
+                @*Accion   Controlador metodo
+                @using (@Html.BeginForm("Contact", "Home", FormMethod.Post, new { @id = "frmAgregar" }))
+                {
+
+                    <div>
+                        @Html.LabelFor(p => p.Nombre)
+                        @Html.TextBoxFor(p => p.Nombre, new { @class = "form-control" })
+                        @Html.ValidationMessage("Nombre", new { @class = "text-danger" })
+                    </div>
+
+                    <div>
+                        @Html.LabelFor(p => p.Email)
+                        @Html.TextBoxFor(p => p.Email, new { @class = "form-control" })
+                        @Html.ValidationMessage("Email", new { @class = "text-danger" })
+                    </div>
+
+                    <div>
+                        @Html.LabelFor(p => p.Comentario)
+                        <br />
+                        @Html.TextAreaFor(p => p.Comentario, null)
+
+                        <br />
+                        @Html.ValidationMessage("Comentario", new { @class = "text-danger" })
+                    </div>
+
+                    <br />
+                    <div style="margin:auto;">
+                        <button type="submit" class="btn btn-primary" , onclick="agregar()">
+                            Enviar
+                        </button>
+                    </div>
+                    <br />
+
+                }*/
+                <h5>Soporte online</h5>
+                <br />
+                <h5>Tel. (+521) 5643991 ext. 713</h5>
+                <br />
+
+            </div>
+        </div>
+
+    <script>
+        function agregar() {
+            if (confirm("Su mensaje ha sido enviado")) {
+            } else {
+                event.preventDefault();
+            }
+        }
+    </script>*@
