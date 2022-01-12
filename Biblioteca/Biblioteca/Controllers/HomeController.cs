@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Net.Mail;
 
 namespace Biblioteca.Controllers
 {
@@ -27,8 +28,12 @@ namespace Biblioteca.Controllers
         [HttpPost]
         public ActionResult Contact(SugerenciaDTO sugerenciaDTO)
         {
-            if (!ModelState.IsValid )
+            if (sugerenciaDTO.Nombre != null && sugerenciaDTO.Email != null && sugerenciaDTO.Comentario != null)
             {
+               bd = new ApplicationDBContext();
+                string Nombre = sugerenciaDTO.Nombre.ToString();
+                string Email = sugerenciaDTO.Email.ToString();
+                string Comentario = sugerenciaDTO.Comentario.ToString();
                 return View(sugerenciaDTO);
             }
 
@@ -55,5 +60,18 @@ namespace Biblioteca.Controllers
             return View();
         }
 
+        internal class MailMessages
+        {
+            public MailMessages()
+            {
+                MailMessages mail = new MailMessages();
+                mail.From = new MailAddress(Email);
+                SmtpClient smtp = new SmtpClient();
+                smtp.Host = "smtp.gmail.com";
+                smtp.Port = 587;
+                smtp.UseDefaultCredentials = false;
+                smtp.Credentials = new System.Net.NetworkCredential("", "");
+            }
+        }
     }
 }
