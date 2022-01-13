@@ -203,6 +203,18 @@ namespace Biblioteca.Controllers
             return View(libro);
         }
 
+        /*
+         *Filtro para realizar busquedas avanzadas
+         *Recibe uno o más de los siguientes parametros
+         *string nombre autor
+         *string titulo libro
+         *int año de publicación
+         *int edicion
+         *string idioma
+         *
+         *Regresa un libro que coincida con la busqueda
+         */
+
         [HttpPost]
         public ActionResult BusquedaAvanzada(LibroDTO libroDTO)
         {
