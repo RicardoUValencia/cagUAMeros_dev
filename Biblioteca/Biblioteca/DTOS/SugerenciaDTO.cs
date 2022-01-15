@@ -13,11 +13,14 @@ namespace Biblioteca.DTOS
         [Display(Name = "Nombre completo")]
         public string Nombre { get; set; }
         [Required]
-        [Display(Name = "Correo")]
+        [Display(Name = "Nombre")]
         public string Email { get; set; }
         [Required]
+        [Display(Name = "Correo")]
 
-        [StringLength(500, ErrorMessage = "La longutid maxima es de 500 caracteres")]
+        [StringLength(500, ErrorMessage = "La longitud maxima es de 500 caracteres")]
         public string Comentario { get; set; }
+        [Required]
+        [Display(Name = "Comentario")]
     }
 }

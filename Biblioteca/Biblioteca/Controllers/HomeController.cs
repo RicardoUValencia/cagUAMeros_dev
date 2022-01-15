@@ -34,6 +34,8 @@ namespace Biblioteca.Controllers
                 string Nombre = sugerenciaDTO.Nombre.ToString();
                 string Email = sugerenciaDTO.Email.ToString();
                 string Comentario = sugerenciaDTO.Comentario.ToString();
+
+
                 return View(sugerenciaDTO);
             }
 
