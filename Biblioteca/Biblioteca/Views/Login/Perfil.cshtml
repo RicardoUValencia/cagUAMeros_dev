@@ -145,18 +145,19 @@
                     </div>
                 </article>
                 <article class="col-md-12">
-                    <!--division que se encarga de mostrar los prestamos, aun no se implementará-->
+                    <!--division que se encarga de mostrar los prestamos-->
                     <div class="prestamos">
                         <h2>Prestamos <img class="prestamos-image" src="~/Img/book.png" /> </h2>
                         <table class="prestamos-table col-md-12">
 
                             <tr class="table-top">
                                 <th>id</th>
-                                <th>Titulo libro</th>
+                                <th>libro</th>
                                 <th>Fecha de prestamo</th>
                                 <th>Fecha de devolución</th>
 
                             </tr>
+                            <!--llena la tabla con los prestamos del usuario en sesion-->
                             @foreach (var item in Model.prestamos)
                             {
                                 <tr>

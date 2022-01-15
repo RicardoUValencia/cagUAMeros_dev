@@ -142,6 +142,7 @@ namespace Biblioteca.Controllers
             //tabla de prestamos
             List<PrestamoDTO> prestamos = null;
             var nombreUsuario = usuario.Nombre;
+            //consulta para recuperar los prestamos del usuario
             using(bd = new ApplicationDBContext())
             {
                 prestamos = (from p in bd.Prestamos

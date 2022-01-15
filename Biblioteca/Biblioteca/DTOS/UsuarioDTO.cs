@@ -51,7 +51,8 @@ namespace Biblioteca.DTOS
         public string Tipo_Usuario { get; set; }//Muestra el nombre de tipo usuario
         public string mensaje { get; set; }
         public string Puesto { get; set; }
-        public List<PrestamoDTO> prestamos { get; set; }
+        public List<PrestamoDTO> prestamos { get; set; }//se crea un atributo de lista para guardar los prestamos y asi poder usarlos
+                                                        //en la vista del perfil
         #endregion
         
     }
