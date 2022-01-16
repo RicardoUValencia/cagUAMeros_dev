@@ -24,21 +24,5 @@ namespace Biblioteca.DTOS
         public string Comentario { get; set; }
        
     }
-    internal class MailMessages
-    {
-        public MailMessages()
-        {
-            string Nombre, Email, Comentario;
-            Nombre = Console.ReadLine();
-            Email = Console.ReadLine();
-            Comentario = Console.ReadLine();
-            MailMessages mail = new MailMessages();
-            //mail.From = new MailAddress(mail.ToString());
-            SmtpClient smtp = new SmtpClient("smtp.gmail.com");
-            //smtp.Host = "smtp.gmail.com";
-            smtp.Port = 587;
-            smtp.UseDefaultCredentials = false;
-            smtp.Credentials = new System.Net.NetworkCredential("", "");
-        }
-    }
+   
 }
