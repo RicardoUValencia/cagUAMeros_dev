@@ -2,7 +2,6 @@
 using Biblioteca.DTOS;
 using Biblioteca.Filters;
 using Biblioteca.Models;
-using FluentEmail.Smtp;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -99,16 +98,5 @@ namespace Biblioteca.Controllers
             return RedirectToAction("Index", "Buscar");
         }
 
-        public static string emailPrestamo()
-        {
-            var password = System.Configuration.ConfigurationManager.AppSettings["email-password"];
-            var sender = new SmtpSender(() => new SmtpClient("smtp.gmail.com")
-            {
-                UseDefaultCredentials = false,
-                Port= 587,
-                Credentials = new NetworkCredential("hectoruam96@gail.com", "")
-            });
-            return "Hola";
-        }
     }
 }
