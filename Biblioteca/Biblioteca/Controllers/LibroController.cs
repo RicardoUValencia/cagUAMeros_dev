@@ -196,6 +196,10 @@ namespace Biblioteca.Controllers
             return RedirectToAction("Index");
         }
 
+        /*
+         *Regresa la vista de busquedas avanzadas
+         */
+
         [HttpGet]
         public ActionResult BusquedaAvanzada()
         {

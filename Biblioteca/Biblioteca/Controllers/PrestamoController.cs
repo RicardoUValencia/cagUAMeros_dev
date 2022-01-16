@@ -10,11 +10,12 @@ using System.Web.Mvc;
 
 namespace Biblioteca.Controllers
 {
-    [Admin]
+    //[Admin]
     public class PrestamoController : Controller
     {
         private ApplicationDBContext bd;
         // GET: Prestamo
+        [Admin]
         public ActionResult Index(PrestamoDTO prestamo)
         {
             List<PrestamoDTO> prestamos = null;
@@ -63,8 +64,7 @@ namespace Biblioteca.Controllers
             return View(prestamos);
         }
 
-        
-        public ActionResult Prestamo(int id)
+        public ActionResult Pedir(int id)
         {
             if (Session["Usuario"] != null)
             {
