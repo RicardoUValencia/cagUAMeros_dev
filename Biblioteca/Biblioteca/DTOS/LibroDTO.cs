@@ -45,7 +45,7 @@ namespace Biblioteca.DTOS
         [Display(Name = "Edición")]
         public string Edicion { get; set; }
 
-        [Required]
+        
         [Display(Name = "Idioma")]
         public string lenguaje { get; set; }
 
