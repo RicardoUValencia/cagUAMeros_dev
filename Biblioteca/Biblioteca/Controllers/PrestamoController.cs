@@ -69,7 +69,7 @@ namespace Biblioteca.Controllers
             if (Session["Usuario"] != null)
             {
                 Usuario usuario = (Usuario)Session["Usuario"];
-
+               
                 using (bd = new ApplicationDBContext())
                 {
                     Prestamo prestamo = new Prestamo()
@@ -94,6 +94,7 @@ namespace Biblioteca.Controllers
             }
 
             return RedirectToAction("Index", "Buscar");
+            
         }
     }
 }
