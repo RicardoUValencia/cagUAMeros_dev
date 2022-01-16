@@ -1,8 +1,8 @@
 ﻿@using Biblioteca.DTOS
-    @model SugerenciaDTO
+@model SugerenciaDTO
 
 @{
-   ViewBag.Title = "Contact";
+    ViewBag.Title = "Contact";
 }
 
 
@@ -10,34 +10,43 @@
 <br />
 <br />
 
-<form method="post" action="~/Views/Home/Contact.cshtml">
+@if (!string.IsNullOrEmpty(ViewBag.Error))
+{
+    <div class="error">@ViewBag.Error</div>
+}
+
+<h4>Dejanos tus comentarios</h4>
+
+@using (@Html.BeginForm("Contact", "Home", FormMethod.Post, new { @id = "frmAgregar" }))
+{
+
     <div>
-        <ul>
-            <h4>Dejanos tus comentarios</h4>
-            <li>
-                <label for="name">Nombre:</label>
-                <input type="text" placeholder="John Doe" required />
-            </li>
-            <li>
-                <label for="email">Email:</label>
-                <input type="email" name="email" placeholder="info@developerji.com" required />
+        @Html.LabelFor(p => p.Nombre)
+        @Html.TextBoxFor(p => p.Nombre, new { @class = "form-control" })
+        @Html.ValidationMessage("Nombre", new { @class = "text-danger" })
+    </div>
 
-            </li>
-            <li>
-                <p>
-                    <label for="message">Comentario</label><br />
-                    <textarea name="comentario" rows="5" cols="50">Escribe tu comentario: </textarea>
+    <div>
+        @Html.LabelFor(p => p.Email)
+        @Html.TextBoxFor(p => p.Email, new { @class = "form-control" })
+        @Html.ValidationMessage("Email", new { @class = "text-danger" })
+    </div>
 
-            </li>
+    <div>
+        @Html.LabelFor(p => p.Comentario)
+        @Html.TextAreaFor(p => p.Comentario, null)
+        @Html.ValidationMessage("Comentario", new { @class = "text-danger" })
+    </div>
 
-
-
-        </ul>
-        <button type="submit",onclick="agregar">
+    <br />
+    <div style="margin:auto;">
+        <button type="submit" class="btn btn-primary" , onclick="agregar()">
             Enviar
         </button>
     </div>
-</form>
+
+}
+
 
 <script>
     function agregar() {

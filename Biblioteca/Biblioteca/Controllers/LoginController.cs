@@ -36,7 +36,7 @@ namespace Biblioteca.Controllers
             using (bd = new ApplicationDBContext())
             {
                 int habilitado = bd.Usuarios.Where(a => a.U_Habilitado == 1 && a.Email.Equals(correo)).Count();
-
+                
                 if (habilitado == 0)
                 {
                     mensaje = "El usuario no existe";

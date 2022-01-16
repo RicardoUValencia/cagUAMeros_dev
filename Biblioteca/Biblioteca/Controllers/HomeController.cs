@@ -26,34 +26,29 @@ namespace Biblioteca.Controllers
         }
 
         [HttpPost]
+
         public ActionResult Contact(SugerenciaDTO sugerenciaDTO)
         {
-            if (sugerenciaDTO.Nombre != null && sugerenciaDTO.Email != null && sugerenciaDTO.Comentario != null)
-            {
-               bd = new ApplicationDBContext();
-                string Nombre = sugerenciaDTO.Nombre.ToString();
-                string Email = sugerenciaDTO.Email.ToString();
-                string Comentario = sugerenciaDTO.Comentario.ToString();
-
-
-                return View(sugerenciaDTO);
-            }
-
             using (var bd = new ApplicationDBContext())
             {
                 Sugerencia sugerencia = new Sugerencia()
                 {
-                    ID = sugerenciaDTO.ID,
+                    //ID = sugerenciaDTO.ID,
                     Nombre = sugerenciaDTO.Nombre,
                     Email = sugerenciaDTO.Email,
                     Comentario = sugerenciaDTO.Comentario
                 };
 
+                if (!ModelState.IsValid)
+                {
+                        return View(sugerenciaDTO);
+                }
+
                 bd.Sugerencia.Add(sugerencia);
                 bd.SaveChanges();
             }
 
-            return View();
+            return RedirectToAction("Contact");
         }
 
         [HttpGet]
@@ -62,7 +57,7 @@ namespace Biblioteca.Controllers
             return View();
         }
 
-        internal class MailMessages
+        /*internal class MailMessages
         {
             public MailMessages()
             {
@@ -74,6 +69,6 @@ namespace Biblioteca.Controllers
                 smtp.UseDefaultCredentials = false;
                 smtp.Credentials = new System.Net.NetworkCredential("", "");
             }
-        }
+        }*/
     }
 }
