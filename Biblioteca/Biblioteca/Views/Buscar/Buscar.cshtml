@@ -99,7 +99,7 @@
                     @Html.DisplayFor(modelItem => item.Ubicacion)
                 </td>
 
-                @if (Session["Usuario"] != null)
+                @if (Session["Usuario"] != null && item.Total_Actual != 0)
                 {
                     <td>
                         @Html.ActionLink(" ", "Prestamo", "Prestamo", new { id = @item.ID }, new { @class = "glyphicon glyphicon-book btn btn-primary" })
