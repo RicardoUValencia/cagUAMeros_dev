@@ -186,6 +186,8 @@ C:\Users\ASUS Sonic Master\Desktop\d\trimestre_noviembre_2021\ing_software\Repo\
 C:\Users\ASUS Sonic Master\Desktop\d\trimestre_noviembre_2021\ing_software\Repo\Biblioteca\Biblioteca\obj\Debug\Biblioteca.csproj.CopyComplete
 C:\Users\ASUS Sonic Master\Desktop\d\trimestre_noviembre_2021\ing_software\Repo\Biblioteca\Biblioteca\obj\Debug\Biblioteca.dll
 C:\Users\ASUS Sonic Master\Desktop\d\trimestre_noviembre_2021\ing_software\Repo\Biblioteca\Biblioteca\obj\Debug\Biblioteca.pdb
+C:\Users\Eduardo\Desktop\caguameros\cagUAMeros_dev\Biblioteca\Biblioteca\bin\System.Web.Mvc.dll
+C:\Users\Eduardo\Desktop\caguameros\cagUAMeros_dev\Biblioteca\Biblioteca\bin\WebGrease.dll
 C:\Users\Eduardo\Desktop\caguameros\cagUAMeros_dev\Biblioteca\Biblioteca\bin\Biblioteca.dll.config
 C:\Users\Eduardo\Desktop\caguameros\cagUAMeros_dev\Biblioteca\Biblioteca\bin\Biblioteca.dll
 C:\Users\Eduardo\Desktop\caguameros\cagUAMeros_dev\Biblioteca\Biblioteca\bin\Biblioteca.pdb
@@ -245,13 +247,11 @@ C:\Users\Eduardo\Desktop\caguameros\cagUAMeros_dev\Biblioteca\Biblioteca\bin\Mic
 C:\Users\Eduardo\Desktop\caguameros\cagUAMeros_dev\Biblioteca\Biblioteca\bin\Microsoft.Web.Infrastructure.dll
 C:\Users\Eduardo\Desktop\caguameros\cagUAMeros_dev\Biblioteca\Biblioteca\bin\Newtonsoft.Json.dll
 C:\Users\Eduardo\Desktop\caguameros\cagUAMeros_dev\Biblioteca\Biblioteca\bin\System.Web.Helpers.dll
-C:\Users\Eduardo\Desktop\caguameros\cagUAMeros_dev\Biblioteca\Biblioteca\bin\System.Web.Mvc.dll
 C:\Users\Eduardo\Desktop\caguameros\cagUAMeros_dev\Biblioteca\Biblioteca\bin\System.Web.Optimization.dll
 C:\Users\Eduardo\Desktop\caguameros\cagUAMeros_dev\Biblioteca\Biblioteca\bin\System.Web.Razor.dll
 C:\Users\Eduardo\Desktop\caguameros\cagUAMeros_dev\Biblioteca\Biblioteca\bin\System.Web.WebPages.Deployment.dll
 C:\Users\Eduardo\Desktop\caguameros\cagUAMeros_dev\Biblioteca\Biblioteca\bin\System.Web.WebPages.dll
 C:\Users\Eduardo\Desktop\caguameros\cagUAMeros_dev\Biblioteca\Biblioteca\bin\System.Web.WebPages.Razor.dll
-C:\Users\Eduardo\Desktop\caguameros\cagUAMeros_dev\Biblioteca\Biblioteca\bin\WebGrease.dll
 C:\Users\Eduardo\Desktop\caguameros\cagUAMeros_dev\Biblioteca\Biblioteca\bin\EntityFramework.xml
 C:\Users\Eduardo\Desktop\caguameros\cagUAMeros_dev\Biblioteca\Biblioteca\bin\EntityFramework.SqlServer.xml
 C:\Users\Eduardo\Desktop\caguameros\cagUAMeros_dev\Biblioteca\Biblioteca\bin\System.Web.Helpers.xml
@@ -275,9 +275,11 @@ C:\Users\Eduardo\Desktop\caguameros\cagUAMeros_dev\Biblioteca\Biblioteca\obj\Deb
 C:\Users\Eduardo\Desktop\caguameros\cagUAMeros_dev\Biblioteca\Biblioteca\obj\Debug\Biblioteca.Migrations.Inicial.resources
 C:\Users\Eduardo\Desktop\caguameros\cagUAMeros_dev\Biblioteca\Biblioteca\obj\Debug\Biblioteca.Migrations.Usuarios.resources
 C:\Users\Eduardo\Desktop\caguameros\cagUAMeros_dev\Biblioteca\Biblioteca\obj\Debug\Biblioteca.Migrations.Prestamos.resources
+C:\Users\Eduardo\Desktop\caguameros\cagUAMeros_dev\Biblioteca\Biblioteca\obj\Debug\Biblioteca.Migrations.Sugerencias.resources
+C:\Users\Eduardo\Desktop\caguameros\cagUAMeros_dev\Biblioteca\Biblioteca\obj\Debug\Biblioteca.Migrations.MigracionPendiente.resources
+C:\Users\Eduardo\Desktop\caguameros\cagUAMeros_dev\Biblioteca\Biblioteca\obj\Debug\Biblioteca.Migrations.Migracion2.resources
 C:\Users\Eduardo\Desktop\caguameros\cagUAMeros_dev\Biblioteca\Biblioteca\obj\Debug\Biblioteca.csproj.GenerateResource.cache
 C:\Users\Eduardo\Desktop\caguameros\cagUAMeros_dev\Biblioteca\Biblioteca\obj\Debug\Biblioteca.csproj.CoreCompileInputs.cache
 C:\Users\Eduardo\Desktop\caguameros\cagUAMeros_dev\Biblioteca\Biblioteca\obj\Debug\Biblioteca.csproj.CopyComplete
 C:\Users\Eduardo\Desktop\caguameros\cagUAMeros_dev\Biblioteca\Biblioteca\obj\Debug\Biblioteca.dll
 C:\Users\Eduardo\Desktop\caguameros\cagUAMeros_dev\Biblioteca\Biblioteca\obj\Debug\Biblioteca.pdb
-C:\Users\Eduardo\Desktop\caguameros\cagUAMeros_dev\Biblioteca\Biblioteca\obj\Debug\Biblioteca.Migrations.Sugerencias.resources

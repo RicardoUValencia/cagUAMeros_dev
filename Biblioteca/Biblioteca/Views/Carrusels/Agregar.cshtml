@@ -1,0 +1,80 @@
+﻿@using Biblioteca.DTOS
+@model CarruselDTO
+
+@{
+    ViewBag.Title = "Agregar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Agregar</h>
+    <div class="row">
+        <div class="col.md-6">
+            @using (@Html.BeginForm("Agregar", "Noticias", FormMethod.Post, new { @id = "frmAgregar", @enctype = "multipart/form-data" }))
+            {
+                <div>
+                    @Html.LabelFor(p => p.ImagePath)
+                    @Html.TextBoxFor(p => p.ImagePath, new { @class = "form-control" })
+                    @Html.ValidationMessage("Imagen", new { @class = "text-danger" })
+                </div>
+
+                <div>
+                    @Html.LabelFor(p => p.Nombre)
+                    @Html.TextBoxFor(p => p.Nombre, new { @class = "form-control" })
+                    @Html.ValidationMessage("Nombre", new { @class = "text-danger" })
+                </div>
+
+                <div>
+                    @Html.LabelFor(p => p.Descripcion)
+                    @Html.TextBoxFor(p => p.Descripcion, new { @class = "form-control" })
+                    @Html.ValidationMessage("Descripcion", new { @class = "text-danger" })
+                </div>
+
+                <div>
+                    @Html.LabelFor(p => p.Url)
+                    @Html.TextBoxFor(p => p.Url, new { @class = "form-control" })
+                    @Html.ValidationMessage("URL", new { @class = "text-danger" })
+                </div>
+
+                <br />
+                <div style="margin:auto;">
+                    <button type="submit" class="btn btn-primary" , Onclick="agregar()">
+                        Guardar
+                    </button>
+                    @Html.ActionLink("Regresar", "Index", "Noticia", null, new { @class = "btn btn-danger", @Onclick = "regresar()" })
+                </div>
+            }
+        </div>
+
+        <script>
+            function agregar() {
+                if (confirm("¿Deseas guardar los cambios?")) {
+                    //alert("Nuevo usuario registrado");
+                } else {
+                    event.preventDefault();
+                }
+            }
+
+            function regresar() {
+                if (confirm("¿Desea cancelar los cambios?") == 1) {
+                    alert("Usuario no registrado");
+                } else {
+                    event.preventDefault();
+                }
+            }
+
+            let imgFoto = document.getElementById("imgFoto");
+            let fupFoto = document.getElementById("fupFoto");
+            fupFoto.onchange = function () {
+                let files = fupFoto.files[0];
+                let reader = new FileReader();
+                reader.onloadend = function () {
+                    imgFoto.src = reader.result;
+                    document.getElementById("nombreFoto").value = file.name;
+                }
+
+                reader.readAsDataURL(files);
+            }
+
+        </script>
+
+
