@@ -21,6 +21,7 @@ namespace Biblioteca.DBContext
         public DbSet<TipoUsuario> TipoUsuarios { get; set; }
         public DbSet<Prestamo> Prestamos { get; set; }
         public DbSet<Sugerencia> Sugerencia { get; set; }
+        public DbSet<Carrusel> Carrusel { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
