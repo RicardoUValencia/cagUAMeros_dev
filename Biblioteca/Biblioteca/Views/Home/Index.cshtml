@@ -25,41 +25,33 @@
         <img src="~/Img/Sor_Juana.png">
     </div>
 </div>
+<br>
+<br>
 
 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
-        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active" draggable="true"></li>
         <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
         <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
     </ol>
-    <div class="carousel-inner">
-
-        <div class="carousel-item active">
-            <img class="d-block w-100" src="Url.Content(Model[0].ImagePath)" alt="(Model[0].Nombre)">
-            <div class="carousel-caption d-none d-md-block">
-                <h5>Model[0].Nombre</h5>
-                <p>Model[0].Descripcion</p>
-                <a href="Model[0].Url" target="_blank"></a>
-            </div>
-
-        </div>
-
+   
+    <div class="carousel-inner" >
+        @{ int cont = 0; }
         @foreach (var item in Model)
         {
-            <div class="carousel-item">
+            var itemDinamico = cont++ == 0 ? "item active" : "item";
+            <div class="@itemDinamico">
                 <img class="d-block w-100" src="@Url.Content(item.ImagePath)" alt="@(item.Nombre)">
                 <div class="carousel-caption d-none d-md-block">
-                    <h5>@item.Nombre</h5>
-                    <p>@item.Descripcion</p>
+                    <h3 style="background-color:white"><font color="Black">@item.Nombre</font></h3>
+                    <h4 style="background-color:white"><font color="Black">@item.Descripcion</font></h4>
                     <a href="@(item.Url)" target="_blank"></a>
                 </div>
 
             </div>
         }
-
-
-
     </div>
+
     <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
         <span class="sr-only">Previous</span>

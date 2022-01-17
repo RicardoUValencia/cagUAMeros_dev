@@ -329,13 +329,7 @@
     <Content Include="Views\Empleado\Agregar.cshtml" />
     <Content Include="Views\Empleado\Editar.cshtml" />
     <Content Include="Views\Prestamo\Index.cshtml" />
-    <Content Include="Views\Carrusels\Create.cshtml" />
-    <Content Include="Views\Carrusels\Delete.cshtml" />
-    <Content Include="Views\Carrusels\Details.cshtml" />
-    <Content Include="Views\Carrusels\Edit.cshtml" />
-    <Content Include="Views\Carrusels\Index.cshtml" />
     <Content Include="Views\Noticias\Index.cshtml" />
-    <Content Include="Views\Carrusels\Agregar.cshtml" />
     <Content Include="Views\Noticias\Agregar.cshtml" />
     <Content Include="Views\Noticias\Editar.cshtml" />
     <Content Include="Scripts\umd\popper.min.js.map" />
