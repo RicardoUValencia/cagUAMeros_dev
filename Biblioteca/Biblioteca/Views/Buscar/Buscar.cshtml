@@ -23,6 +23,10 @@
             <p style="text-align:center;">@Html.Label("El libro no se encuentra en el catalago", new { @class = "text-danger", @id = "msjError" })</p>
         }
     </div>
+    
+    <p>
+        @Html.ActionLink("Busqueda avanzada", "BusquedaAvanzada", "Libro", null, new { @class = "btn btn-success" })
+    </p>
 
     <table class="table">
         <tr>
