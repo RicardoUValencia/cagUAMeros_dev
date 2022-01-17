@@ -93,3 +93,4 @@ C:\Users\ASUS Sonic Master\Desktop\d\trimestre_noviembre_2021\ing_software\cagUA
 C:\Users\ASUS Sonic Master\Desktop\d\trimestre_noviembre_2021\ing_software\cagUAMeros_dev\Biblioteca\Biblioteca\obj\Debug\Biblioteca.dll
 C:\Users\ASUS Sonic Master\Desktop\d\trimestre_noviembre_2021\ing_software\cagUAMeros_dev\Biblioteca\Biblioteca\obj\Debug\Biblioteca.pdb
 C:\Users\ASUS Sonic Master\Desktop\d\trimestre_noviembre_2021\ing_software\cagUAMeros_dev\Biblioteca\Biblioteca\bin\Biblioteca.dll.config
+C:\Users\ASUS Sonic Master\Desktop\d\trimestre_noviembre_2021\ing_software\cagUAMeros_dev\Biblioteca\Biblioteca\obj\Debug\Biblioteca.Migrations.Carrusel.resources
