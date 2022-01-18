@@ -17,6 +17,7 @@ namespace Biblioteca.Controllers
     {
         private ApplicationDBContext bd;
         // GET: Prestamo
+        [Admin]
         public ActionResult Index(PrestamoDTO prestamo)
         {
             List<PrestamoDTO> prestamos = null;
