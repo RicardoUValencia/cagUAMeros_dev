@@ -1,0 +1,65 @@
+﻿@using Biblioteca.DTOS
+@model LibroDTO
+@{
+    ViewBag.Title = "Informacion";
+}
+
+<h2 class="mt-5">Informacion completa del libro</h2>
+
+<div class="row">
+    <div class="col-md-6 mt-5">
+        <div class="">
+
+            @{
+                var extension = Model.ExtensionFoto;
+                var cadenaBase64 = Model.Foto;
+                var extensionPDF = Model.ExtensionPDF;
+                var cadenaBase64PDF = Model.PDF;
+                var titulo = Model.Titulo;
+                var autor = Model.Nombre_Autor;
+                var anio = Model.Anio_Publicacion;
+                var edicion = Model.Edicion;
+            }
+
+            <img src="data:image/@extension;base64,@cadenaBase64" height="500" width="300" />
+        </div>
+    </div>
+
+    <div class="col-md-6 mt-5">
+        <div class="d-flex">
+            @Html.LabelFor(p => p.Titulo)
+            <p>: @titulo</p>
+        </div>
+
+        <div class="d-flex">
+            @Html.LabelFor(p => p.Nombre_Autor)
+            <p>: @autor</p>
+        </div>
+
+        <div class="d-flex">
+            @Html.LabelFor(p => p.Edicion)
+            <p>: @edicion</p>
+        </div>
+
+        <div class="d-flex">
+            @Html.LabelFor(p => p.Anio_Publicacion)
+            <p>: @anio</p>
+        </div>
+
+        
+    </div>
+
+</div>
+
+<div class="row w-100 mt-5" style="margin-left:360px;">
+    <div class="col-9">
+        @*<embed src="data:application/pdf;base64,@cadenaBase64PDF" type="application/pdf" width="200" height="200"/>*@
+        <iframe src="data:application/pdf;base64,@cadenaBase64PDF" type="application/pdf" width="600" height="800"></iframe>
+    </div>
+</div>
+<br />
+<div style="margin:auto;">
+
+    @Html.ActionLink("Regresar", "Index", "Libro", null, new { @class = "btn btn-danger" })
+</div>
+

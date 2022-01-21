@@ -57,9 +57,10 @@ namespace Biblioteca.DTOS
         [Display(Name = "Categoria")]
         [StringLength(50, ErrorMessage = "La longitud maxima con 50 caracteres")]
         public string categoria_Libro { get; set; }
-
-        public byte[] Foto { get; set; }
-
+        public string Foto { get; set; }
+        public string ExtensionFoto { get; set; }
+        public string PDF { get; set; }
+        public string ExtensionPDF { get; set; }
         public int Total_Actual { get; set; }
         public string Disponibles { get; set; }
         public string Titulo_Autor { get; set; }

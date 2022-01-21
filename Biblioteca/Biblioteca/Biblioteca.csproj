@@ -28,6 +28,7 @@
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
     <TypeScriptToolsVersion>4.3</TypeScriptToolsVersion>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -57,17 +58,15 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
-    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Web.Routing" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Configuration" />
@@ -111,6 +110,7 @@
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="System.Xml.Linq" />
     <Reference Include="WebGrease">
       <Private>True</Private>
       <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
@@ -169,6 +169,14 @@
     <Compile Include="Migrations\202201170436363_Carrusel.cs" />
     <Compile Include="Migrations\202201170436363_Carrusel.designer.cs">
       <DependentUpon>202201170436363_Carrusel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202201200131213_Imagen_y_pdf_de_libros.cs" />
+    <Compile Include="Migrations\202201200131213_Imagen_y_pdf_de_libros.designer.cs">
+      <DependentUpon>202201200131213_Imagen_y_pdf_de_libros.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202201210251387_Modelo_libro_actualizado.cs" />
+    <Compile Include="Migrations\202201210251387_Modelo_libro_actualizado.designer.cs">
+      <DependentUpon>202201210251387_Modelo_libro_actualizado.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Carrusel.cs" />
@@ -341,6 +349,7 @@
     <Content Include="Views\Noticias\Editar.cshtml" />
     <Content Include="Views\Noticias\Index.cshtml" />
     <Content Include="Views\Libro\BusquedaAvanzada.cshtml" />
+    <Content Include="Views\Libro\Informacion.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -366,6 +375,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202201170436363_Carrusel.resx">
       <DependentUpon>202201170436363_Carrusel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202201200131213_Imagen_y_pdf_de_libros.resx">
+      <DependentUpon>202201200131213_Imagen_y_pdf_de_libros.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202201210251387_Modelo_libro_actualizado.resx">
+      <DependentUpon>202201210251387_Modelo_libro_actualizado.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

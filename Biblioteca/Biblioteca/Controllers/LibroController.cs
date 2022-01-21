@@ -14,7 +14,7 @@ namespace Biblioteca.Controllers
     //[Admin]
     public class LibroController : Controller
     {
-        private ApplicationDBContext bd; 
+        private ApplicationDBContext bd;
         private LibroDTO libroDTOVal;
         // GET: Libro
         public ActionResult Index(LibroDTO libroDTO)
@@ -65,7 +65,7 @@ namespace Biblioteca.Controllers
         }
 
         [HttpPost]
-        public ActionResult Agregar(LibroDTO libro)
+        public ActionResult Agregar(LibroDTO libro, HttpPostedFileBase foto, HttpPostedFileBase PDF)
         {
             try
             {
@@ -80,7 +80,7 @@ namespace Biblioteca.Controllers
                     registrosEstante = bd.Libros.Where(l => l.Ubicacion.Equals(libro.Ubicacion)).Count();
                 }
 
-                if (!ModelState.IsValid || registros >= 1 || registrosEstante >= 1)
+                if (!ModelState.IsValid || registros >= 1 || registrosEstante >= 1 || foto == null || PDF == null)
                 {
                     if (registros >= 1)
                     {
@@ -93,26 +93,33 @@ namespace Biblioteca.Controllers
                     }
 
                     //Verificar la foto
-                    //if (foto == null)
-                    //{
-                    //    libro.mensaje = "La foto es obligatoria";
-                    //}
+                    if (foto == null)
+                    {
+                        libro.mensaje = "La imagen de la portada es obligatoria";
+                    }
+
+                    if (PDF == null)
+                    {
+                        libro.mensaje = "El indice en PDF es obligatorio";
+                    }
 
                     listarCategorias();
                     return View(libro);
                 }
 
+                //imagen de la portada
+
+
                 using (bd = new ApplicationDBContext())
                 {
                     Libro l = new Libro();
 
-                    #region Imagen
-                    byte[] fotoBD = null;
-                    //if (foto != null)
-                    //{
-                    //    BinaryReader lector = new BinaryReader(foto.InputStream);
-                    //    fotoBD = lector.ReadBytes((int)foto.ContentLength);
-                    //}
+                    #region Imagen y PDF
+                    BinaryReader lector = new BinaryReader(foto.InputStream);
+                    byte[] fotoBD = lector.ReadBytes((int)foto.ContentLength);
+
+                    BinaryReader reader = new BinaryReader(PDF.InputStream);
+                    byte[] pdfBD = reader.ReadBytes((int)PDF.ContentLength);
                     #endregion
 
                     l.ID = libro.ID;
@@ -126,6 +133,8 @@ namespace Biblioteca.Controllers
                     l.Idioma = libro.lenguaje;
                     l.Fecha_Registro = DateTime.Now;
                     l.Anio_Publicacion = libro.Anio_Publicacion;
+                    l.img = fotoBD;
+                    l.PDF = pdfBD;
                     l.L_Habilitado = 1;
 
                     bd.Libros.Add(l);
@@ -207,10 +216,11 @@ namespace Biblioteca.Controllers
 
             return RedirectToAction("Index");
         }
-        
-        /*
-         *Regresa la vista de busquedas avanzadas
-         */
+
+        /// <summary>
+        /// Filtro de busqueda avanzada
+        /// </summary>
+        /// <returns>Regresa la vista del filtro de busqueda avanzada</returns>
 
         [HttpGet]
         public ActionResult BusquedaAvanzada()
@@ -219,17 +229,18 @@ namespace Biblioteca.Controllers
             return View(libro);
         }
 
-        /*
-         *Filtro para realizar busquedas avanzadas
-         *Recibe uno o más de los siguientes parametros
-         *string nombre autor
-         *string titulo libro
-         *int año de publicación
-         *int edicion
-         *string idioma
-         *
-         *Regresa un libro que coincida con la busqueda
-         */
+        
+        /// <summary>
+        /// Filtro para realizar busquedas avanzadas
+        /// Recibe una o más de las siguientes propiedades del objeto
+        /// </summary>
+        /// <param name="libroDTO">Este es el objeto</param>
+        /// <param name="nombreAutor"></param>
+        /// <param name="tituloLibro"></param>
+        /// <param name="añoPublicación"></param>
+        /// <param name="edicion"></param>
+        /// <param name="idioma"></param>
+        /// <returns>Regresa un libro que coincida con la busqueda</returns>
 
         [HttpPost]
         public ActionResult BusquedaAvanzada(LibroDTO libroDTO)
@@ -258,7 +269,7 @@ namespace Biblioteca.Controllers
                               Edicion = l.Edicion
                           }).ToList();
 
-                if (libroDTO.Titulo == null && libroDTO.Nombre_Autor == null && libroDTO.lenguaje == null 
+                if (libroDTO.Titulo == null && libroDTO.Nombre_Autor == null && libroDTO.lenguaje == null
                     && libroDTO.categoria_Libro == null && libroDTO.Edicion == null && libroDTO.Anio_Publicacion == 0)
                 {
                     librosFiltrados = libros;
@@ -271,6 +282,40 @@ namespace Biblioteca.Controllers
             }
 
             return View(librosFiltrados);
+        }
+
+        /// <summary>
+        /// Regresa un objeto con toda la informacion de un libro
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>Regresa la vista de la informacion completa dle libro</returns>
+
+        [HttpGet]
+        public ActionResult Informacion(int id)
+        {
+            LibroDTO libroDTO = new LibroDTO();
+            using (bd = new ApplicationDBContext())
+            {
+                var libro = bd.Libros.Where(l => l.ID == id).First();
+
+                #region Datos de la imagen
+
+                #endregion
+
+                libroDTO.Edicion = libro.Edicion;
+                libroDTO.Nombre_Autor = libro.Nombre_Autor;
+                libroDTO.Titulo = libro.Titulo;
+                libroDTO.Anio_Publicacion = libro.Anio_Publicacion;
+                libroDTO.lenguaje = libro.Idioma;
+                libroDTO.Ubicacion = libro.Ubicacion;
+                libroDTO.ExtensionFoto = Path.GetExtension(libro.NombreImg);
+                libroDTO.Foto = Convert.ToBase64String(libro.img);
+                libroDTO.ExtensionPDF = Path.GetExtension(libro.NombrePDF);
+                libroDTO.PDF = Convert.ToBase64String(libro.PDF);
+
+            }
+
+            return View(libroDTO);
         }
 
         public void listarCategorias()

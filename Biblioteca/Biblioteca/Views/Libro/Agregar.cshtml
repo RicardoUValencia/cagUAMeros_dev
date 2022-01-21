@@ -68,6 +68,16 @@
                 }
             </div>
 
+            <div style="margin-top:10px;">
+                @Html.Label("Portada libro")
+                @Html.TextBox("foto", "", new { type = "file" })
+            </div>
+
+            <div style="margin-top:10px;">
+                @Html.Label("Indice en PDF")
+                @Html.TextBox("PDF", "", new { type = "file" })
+            </div>
+
             <br />
             <div style="margin:auto;">
                 <button type="submit" class="btn btn-primary" , onclick="agregar()">

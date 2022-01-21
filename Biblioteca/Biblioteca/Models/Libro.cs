@@ -20,7 +20,11 @@ namespace Biblioteca.Models
         public int Cantidad { get; set; }
         public int Total_Actual { get; set; }
         public int L_Habilitado { get; set; }
-
+        public byte[] img { get; set; }
+        public byte[] PDF { get; set; }
+        public string NombreImg { get; set; }
+        public string NombrePDF { get; set; }
         public virtual Categoria Categoria { get; set; }
+        
     }
 }
