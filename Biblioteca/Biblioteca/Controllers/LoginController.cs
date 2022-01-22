@@ -4,6 +4,8 @@ using Biblioteca.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
 using System.Security.Cryptography;
 using System.Text;
 using System.Web;
@@ -164,10 +166,74 @@ namespace Biblioteca.Controllers
 
             return View(usuario);
         }
-        public ActionResult EnviarTabla(List<PrestamoDTO> prestamos)
+        public ActionResult EnviarTabla( String nombre, String email)
         {
-            //implementando
-            return RedirectToAction("Perfil");
+            List<PrestamoDTO> prestamos = null;
+            using (bd = new ApplicationDBContext())
+            {
+                prestamos = (from p in bd.Prestamos
+                             join u in bd.Usuarios
+                             on p.UsuarioID equals u.ID
+                             join l in bd.Libros on p.LibroID equals l.ID
+                             where u.Nombre.Contains(nombre)
+                             select new PrestamoDTO
+                             {
+                                 ID = p.ID,
+                                 nombreUsuario = u.Nombre,
+                                 tituloLibro = l.Titulo,
+                                 Fecha_Devolucion = p.Fecha_Devolucion,
+                                 Fecha_Prestamo = p.Fecha_Prestamo
+
+                             }).ToList();
+            }
+           
+            String body ="<h2> Hola"+ nombre +", le proporcionamos la información acerca de sus prestamos</h2>"+
+                            "<table>" +
+                                 "<tr>" +
+                                    "<th>Libro</th>" +
+                                    "<th>Fecha de prestamo</th>" +
+                                    "<th>Fecha de devolucion</th>"
+                                +"</tr>";
+
+
+
+
+           foreach (var item in prestamos)
+            {
+                body=body+ "" +
+                    "<tr>" +
+                        "<td>" +
+                            item.tituloLibro+
+                         "</td>"+
+                          "<td>" +
+                            item.Fecha_Prestamo +
+                         "</td>"+
+                          "<td>" +
+                            item.Fecha_Devolucion +
+                         "</td>"+
+                         "</tr>";
+
+            }
+            body = body + "</table>";
+            SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587)
+            {
+                UseDefaultCredentials = false,
+                DeliveryMethod = SmtpDeliveryMethod.Network,
+                EnableSsl = true,
+                Credentials = new NetworkCredential("bibliotecadig.is@gmail.com", "asd?123456")
+            };
+
+            MailMessage mail = new MailMessage();
+            mail.From = new MailAddress("blibliotecadig.is@gmail.com", "Biblioteca Digital");
+            mail.To.Add(new MailAddress(email));
+            mail.Subject = "Información acerca de sus prestamo";
+            mail.IsBodyHtml = true;
+            mail.Body = body;
+
+            smtp.Send(mail);
+
+            return RedirectToAction("Perfil", "Login");
+
         }
 
 
