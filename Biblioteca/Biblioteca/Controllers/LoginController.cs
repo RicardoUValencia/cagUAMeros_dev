@@ -164,6 +164,12 @@ namespace Biblioteca.Controllers
 
             return View(usuario);
         }
+        public ActionResult EnviarTabla(List<PrestamoDTO> prestamos)
+        {
+            //implementando
+            return RedirectToAction("Perfil");
+        }
+
 
 
 

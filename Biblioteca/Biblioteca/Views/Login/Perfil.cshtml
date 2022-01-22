@@ -162,10 +162,10 @@
                             {
                                 <tr>
                                     <td>
-                                        @Html.DisplayFor(modelItem =>item.LibroID)
+                                        @Html.DisplayFor(modelItem => item.LibroID)
                                     </td>
                                     <td>
-                                        @Html.DisplayFor(modelItem =>item.tituloLibro )
+                                        @Html.DisplayFor(modelItem => item.tituloLibro)
                                     </td>
                                     <td>
                                         @Html.DisplayFor(modelItem => item.Fecha_Prestamo)
@@ -173,13 +173,16 @@
                                     <td>
                                         @Html.DisplayFor(modelItem => item.Fecha_Devolucion)
                                     </td>
-                                   
 
-                                    
+
+
                                 </tr>
                             }
 
                         </table>
+                        <div class="send-report" >
+                            @Html.ActionLink("Enviar Tabla", "Editar", "Usuario", new { id = Model.ID }, new { @class = "btn btn-primary " })
+                        </div>
 
                     </div>
                 </article>
