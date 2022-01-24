@@ -21,14 +21,18 @@
                 @Html.DisplayNameFor(model => model.nombreUsuario)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Fecha_Prestamo)
+                @Html.DisplayNameFor(model => model.fechaprestamo)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Fecha_Devolucion)
+                @Html.DisplayNameFor(model => model.fechadevolucion)
             </th>
             <th>
                 Operaciones
             </th>
+            <th>
+                Deuda
+            </th>
+
         </tr>
         <tr>
             <td></td>
@@ -71,7 +75,7 @@
 }
 <script>
 
-    let Nombre_Autor = document.getElementById("nombreUsuario");
+    let Nombre_Autor = document.getElementById("nombreUsuario");    
     let frmFiltro = document.getElementById("frmFiltro");
 
     Nombre_Autor.onkeyup = function () {
