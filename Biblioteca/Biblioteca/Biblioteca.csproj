@@ -135,6 +135,8 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LibroController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\NoticiaController.cs" />
+    <Compile Include="Controllers\NoticiasController.cs" />
     <Compile Include="Controllers\PrestamoController.cs" />
     <Compile Include="Controllers\UsuarioController.cs" />
     <Compile Include="DBContext\ApplicationDBContext.cs" />
@@ -175,7 +177,7 @@
     <Compile Include="Models\Categoria.cs" />
     <Compile Include="Models\Libro.cs" />
     <Compile Include="Models\Prestamo.cs" />
-    <Compile Include="Models\Sugenrencia.cs" />
+    <Compile Include="Models\Sugerencia.cs" />
     <Compile Include="Models\TipoUsuario.cs" />
     <Compile Include="Models\Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -337,14 +339,13 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
-    <Content Include="Views\Noticias\Agregar.cshtml" />
-    <Content Include="Views\Noticias\Editar.cshtml" />
-    <Content Include="Views\Noticias\Index.cshtml" />
     <Content Include="Views\Libro\BusquedaAvanzada.cshtml" />
+    <Content Include="Views\Noticia\Agregar.cshtml" />
+    <Content Include="Views\Noticia\Editar.cshtml" />
+    <Content Include="Views\Noticia\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="NewFolder1\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
