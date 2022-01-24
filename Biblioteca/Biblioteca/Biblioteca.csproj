@@ -135,7 +135,9 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LibroController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\NoticiasController.cs" />
     <Compile Include="Controllers\PrestamoController.cs" />
+    <Compile Include="Controllers\SugerenciaController.cs" />
     <Compile Include="Controllers\UsuarioController.cs" />
     <Compile Include="DBContext\ApplicationDBContext.cs" />
     <Compile Include="DTOS\CarruselDTO.cs" />
@@ -162,10 +164,6 @@
     <Compile Include="Migrations\202110171903341_Prestamos.designer.cs">
       <DependentUpon>202110171903341_Prestamos.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202112132231074_Sugerencias.cs" />
-    <Compile Include="Migrations\202112132231074_Sugerencias.designer.cs">
-      <DependentUpon>202112132231074_Sugerencias.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\202201170436363_Carrusel.cs" />
     <Compile Include="Migrations\202201170436363_Carrusel.designer.cs">
       <DependentUpon>202201170436363_Carrusel.cs</DependentUpon>
@@ -175,7 +173,7 @@
     <Compile Include="Models\Categoria.cs" />
     <Compile Include="Models\Libro.cs" />
     <Compile Include="Models\Prestamo.cs" />
-    <Compile Include="Models\Sugenrencia.cs" />
+    <Compile Include="Models\Sugerencia.cs" />
     <Compile Include="Models\TipoUsuario.cs" />
     <Compile Include="Models\Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -341,6 +339,7 @@
     <Content Include="Views\Noticias\Editar.cshtml" />
     <Content Include="Views\Noticias\Index.cshtml" />
     <Content Include="Views\Libro\BusquedaAvanzada.cshtml" />
+    <Content Include="Views\Sugerencia\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -360,9 +359,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202110171903341_Prestamos.resx">
       <DependentUpon>202110171903341_Prestamos.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202112132231074_Sugerencias.resx">
-      <DependentUpon>202112132231074_Sugerencias.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202201170436363_Carrusel.resx">
       <DependentUpon>202201170436363_Carrusel.cs</DependentUpon>
