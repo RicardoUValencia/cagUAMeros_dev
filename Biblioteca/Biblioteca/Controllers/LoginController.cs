@@ -20,7 +20,8 @@ namespace Biblioteca.Controllers
             return View();
         }
         
-        public ActionResult Login(UsuarioDTO alumnoDTO)
+        [HttpPost]
+        public ActionResult Index(UsuarioDTO alumnoDTO)
         {
             string mensaje = "";
             string correo = alumnoDTO.Email;
@@ -39,9 +40,9 @@ namespace Biblioteca.Controllers
 
                 if (habilitado == 0)
                 {
-                    mensaje = "El usuario no existe";
-                    //return View(alumnoDTO);
-                    return RedirectToAction("Index", "Login");
+                    alumnoDTO.mensaje = "El Usuario no existe.";
+                    return View(alumnoDTO);
+                    //return RedirectToAction("Index", "Login");
                 }
                 else
                 {
@@ -52,8 +53,9 @@ namespace Biblioteca.Controllers
 
                     if (mensaje.Equals("0"))
                     {
-                        mensaje = "Usuario o contraseña incorrectos";
-                        return RedirectToAction("Index", "Login");
+                        alumnoDTO.mensaje = "Contraseña incorrecta.";
+                        return View(alumnoDTO);
+                        //return RedirectToAction("Login", "Login");
                     }
                     else
                     {
@@ -94,8 +96,7 @@ namespace Biblioteca.Controllers
             }
 
             return RedirectToAction("Index", "Home");
-        }//Fin login
-       
+        }//Fin login   
 
         public ActionResult CerrarSesion()
         {
