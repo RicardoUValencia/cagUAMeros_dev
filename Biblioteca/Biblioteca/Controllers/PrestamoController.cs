@@ -108,6 +108,14 @@ namespace Biblioteca.Controllers
 
         }
 
+        public void Deuda(PrestamoDTO prestamo, UsuarioDTO usuario)
+        {
+            if (DateTime.Compare(prestamo.Fecha_Devolucion, DateTime.Now) < 0)
+            {
+                usuario.Deuda = usuario.Deuda + 50;
+            }
+        }
+
         
         public ActionResult Prestamo(int id)
         {

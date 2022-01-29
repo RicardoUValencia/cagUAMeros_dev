@@ -135,9 +135,11 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LibroController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\NoticiaController.cs" />
     <Compile Include="Controllers\PrestamoController.cs" />
     <Compile Include="Controllers\UsuarioController.cs" />
     <Compile Include="DBContext\ApplicationDBContext.cs" />
+    <Compile Include="DTOS\CarruselDTO.cs" />
     <Compile Include="DTOS\CategoriaDTO.cs" />
     <Compile Include="DTOS\LibroDTO.cs" />
     <Compile Include="DTOS\PrestamoDTO.cs" />
@@ -161,11 +163,16 @@
     <Compile Include="Migrations\202110171903341_Prestamos.designer.cs">
       <DependentUpon>202110171903341_Prestamos.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202112132231074_Sugerencias.cs" />
-    <Compile Include="Migrations\202112132231074_Sugerencias.designer.cs">
-      <DependentUpon>202112132231074_Sugerencias.cs</DependentUpon>
+    <Compile Include="Migrations\202201170436363_Carrusel.cs" />
+    <Compile Include="Migrations\202201170436363_Carrusel.designer.cs">
+      <DependentUpon>202201170436363_Carrusel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202201231912511_Deuda.cs" />
+    <Compile Include="Migrations\202201231912511_Deuda.designer.cs">
+      <DependentUpon>202201231912511_Deuda.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Carrusel.cs" />
     <Compile Include="Models\Categoria.cs" />
     <Compile Include="Models\Libro.cs" />
     <Compile Include="Models\Prestamo.cs" />
@@ -331,6 +338,10 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
+    <Content Include="Views\Libro\BusquedaAvanzada.cshtml" />
+    <Content Include="Views\Noticia\Agregar.cshtml" />
+    <Content Include="Views\Noticia\Editar.cshtml" />
+    <Content Include="Views\Noticia\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -351,8 +362,11 @@
     <EmbeddedResource Include="Migrations\202110171903341_Prestamos.resx">
       <DependentUpon>202110171903341_Prestamos.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202112132231074_Sugerencias.resx">
-      <DependentUpon>202112132231074_Sugerencias.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202201170436363_Carrusel.resx">
+      <DependentUpon>202201170436363_Carrusel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202201231912511_Deuda.resx">
+      <DependentUpon>202201231912511_Deuda.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

@@ -10,59 +10,57 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Libreria digital", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Inicio", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Buscar", "Index", "Buscar")</li>
-                    @if (Session["Administrador"] != null)
-                    {
-                        <li>@Html.ActionLink("Empleados", "Index", "Empleado")</li>
-                        <li>@Html.ActionLink("Libros", "Index", "Libro")</li>
-                        <li>@Html.ActionLink("Usuarios", "Index", "Usuario")</li>
-                        <li>@Html.ActionLink("Categoria", "Index", "Categoria")</li>
-                        <li>@Html.ActionLink("Prestamos", "Index", "Prestamo")</li>
-                    }
-                    else if (Session["Bibliotecario"] != null)
-                    {
-                        <li>@Html.ActionLink("Libros", "Index", "Libro")</li>
-                        <li>@Html.ActionLink("Categoria", "Index", "Categoria")</li>
-                        <li>@Html.ActionLink("Usuarios", "Index", "Usuario")</li>
-                        <li>@Html.ActionLink("Prestamos", "Index", "Prestamo")</li>
-                    }
+    @*nueva barra*@
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        @Html.ActionLink("Libreria digital", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+       
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-                    <li>@Html.ActionLink("Acerca de", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contacto", "Contact", "Home")</li>
-                    @*Cerrar sesion*@
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="mr-3">@Html.ActionLink("Inicio", "Index", "Home", null, new { @class = "text-white" })</li>
+                <li class="mr-3">@Html.ActionLink("Buscar", "Index", "Buscar", null, new { @class = "text-white" })</li>
+                @if (Session["Administrador"] != null)
+                {
+                    <li class="mr-3">@Html.ActionLink("Empleados", "Index", "Empleado", null, new { @class = "text-white" })</li>
+                    <li class="mr-3">@Html.ActionLink("Libros", "Index", "Libro", null, new { @class = "text-white" })</li>
+                    <li class="mr-3">@Html.ActionLink("Usuarios", "Index", "Usuario", null, new { @class = "text-white" })</li>
+                    <li class="mr-3">@Html.ActionLink("Categoria", "Index", "Categoria", null, new { @class = "text-white" })</li>
+                    <li class="mr-3">@Html.ActionLink("Prestamos", "Index", "Prestamo", null, new { @class = "text-white" })</li>
+                    <li class="mr-3">@Html.ActionLink("Noticia", "Index", "Noticia", null, new { @class = "text-white" })</li>
+                }
+                else if (Session["Bibliotecario"] != null)
+                {
+                    <li class="mr-3">@Html.ActionLink("Libros", "Index", "Libro", null, new { @class = "text-white" })</li>
+                    <li class="mr-3">@Html.ActionLink("Categoria", "Index", "Categoria", null, new { @class = "text-white" })</li>
+                    <li class="mr-3">@Html.ActionLink("Usuarios", "Index", "Usuario", null, new { @class = "text-white" })</li>
+                    <li class="mr-3">@Html.ActionLink("Prestamos", "Index", "Prestamo", null, new { @class = "text-white" })</li>
+                }
 
-                    @if (Session["Administrador"] != null || Session["Bibliotecario"] != null || Session["Usuario"] != null)
-                    {
-                        <li>@Html.ActionLink("Cerrar sesión", "CerrarSesion", "Login")</li>
-                        @*<li>@Html.ActionLink("Perfil", "Perfil", "Login")</li>*@
-                    }
-                    else
-                    {
-                        <li>@Html.ActionLink("Login", "Index", "Login")</li>
-                    }
-                    @if (Session["Usuario"] != null)
-                    {
-                        <li>@Html.ActionLink("Perfil", "Perfil", "Login")</li>
-                    }
+                <li class="mr-3">@Html.ActionLink("Acerca de", "About", "Home", null, new { @class = "text-white" })</li>
+                <li class="mr-3">@Html.ActionLink("Contacto", "Contact", "Home", null, new { @class = "text-white" })</li>
+                @if (Session["Usuario"] != null)
+                {
+                    <li class="mr-3">@Html.ActionLink("Perfil", "Perfil", "Login", null, new { @class = "text-white" })</li>
+                }
+                @*Cerrar sesion*@
 
+                @if (Session["Administrador"] != null || Session["Bibliotecario"] != null || Session["Usuario"] != null)
+                {
+                    <li class="mr-3">@Html.ActionLink("Cerrar sesión", "CerrarSesion", "Login", null, new { @class = "text-white" })</li>
+                    @*<li>@Html.ActionLink("Perfil", "Perfil", "Login")</li>*@
+                }
+                else
+                {
+                    <li class="mr-3">@Html.ActionLink("Login", "Index", "Login", null, new { @class = "text-white" })</li>
+                }
 
-                </ul>
-            </div>
+            </ul>
         </div>
-    </div>
+    </nav>
+    @*fin nueva barra*@
     <div class="container body-content">
         @RenderBody()
         <hr />

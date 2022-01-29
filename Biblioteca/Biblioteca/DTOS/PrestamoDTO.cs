@@ -18,12 +18,18 @@ namespace Biblioteca.DTOS
         public int P_Habilitado { get; set; }
         public virtual Libro Libro { get; set; }
         public virtual Usuario Usuario { get; set; }
+        
 
         #region Propiedades extra
-        [Display(Name="Nombre usuario")]
+        [Display(Name="Nombre de usuario")]
         public string nombreUsuario { get; set; }
-        [Display(Name = "Titulo libro")]
+        [Display(Name = "Titulo  del libro")]
         public string tituloLibro { get; set; }
+        [Display(Name = "Fecha del prestamo")]
+        public string fechaprestamo { get; set; }
+        [Display(Name = "Fecha de devolucion")]
+        public string fechadevolucion { get; set; }
+
         #endregion
     }
 }
