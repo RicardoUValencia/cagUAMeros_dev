@@ -1,12 +1,13 @@
 ﻿@using Biblioteca.DTOS
 @model UsuarioDTO
+
 @{
-    Layout = null;
+    ViewBag.Title = "Error";
 }
 
 <html>
 <head>
-    <title>sistema de login</title>
+    <title>sistema de login Error</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <!-- vinculo a bootstrap -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -60,12 +61,23 @@
         </div>
         <div class="ContentForm">
 
-            @using (@Html.BeginForm("Index", "Login", FormMethod.Post, new { @id = "frmLogin" }))
+            @using (@Html.BeginForm("Error", "Login", FormMethod.Post, new { @id = "frmError" }))
             {
+                <div class="alert alert-secondary" role="alert">
+                    El usuario que ingresaste es incorrecto. Intentalo de nuevo
+                </div>
                 <div class="input-group input-group-lg">
                     <span class="input-group-addon" id="sizing-addon1"><i class="glyphicon glyphicon-envelope"></i></span>
                     @Html.TextBox("Email", null, new { @class = "form-control", @placeholder = "Usuario", @required = "true" })
                 </div>
+
+                <div>
+                    @if (Model != null && Model.Equals("0"))
+                    {
+                        <p style="text-align:center;">@Html.Label("El usuario no existe.", new { @class = "text-danger", @id = "msjError" })</p>
+                    }
+                </div>
+
                 <br>
                 <div class="input-group input-group-lg">
                     <span class="input-group-addon" id="sizing-addon1"><i class="glyphicon glyphicon-lock"></i></span>
@@ -78,33 +90,7 @@
             }
 
         </div>
-        <div>
-            @if (Model != null && !Model.mensaje.Equals(""))
-                    {
-                        var mensaje = Model.mensaje;
-
-                <div class="alert alert-danger d-flex align-items-center" role="alert">
-                    <svg class="bi flex-shrink-0 me-2" width="5" height="5" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill" /></svg>
-                    <div>
-                        @mensaje;
-                    </div>
-                </div>
-            }
-        </div>
-
     </div>
-    @Scripts.Render("~/bundles/jquery")
-    <script src="~\Scripts\jquery.unobtrusive-ajax.js"></script>
-</body>
+    </body>
+    </html>
 
-</html>
-
-<script>
-    function Ingresar(mensaje) {
-        if (mensaje == "1") {
-            window.location.href = '@Url.Action("Index","Libro")';
-        } else {
-            alert("Usuario o contraseña incorrectos");
-        }
-    }
-</script>
