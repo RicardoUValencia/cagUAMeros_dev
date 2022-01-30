@@ -99,6 +99,10 @@
                     @Html.DisplayFor(modelItem => item.Ubicacion)
                 </td>
 
+                <td>
+                    @Html.ActionLink("Información", "Informacion", "Libro", new { id = @item.ID }, new { @class = "btn btn-primary", @Onclick = "eliminar()" })
+                </td>
+
                 @if (Session["Usuario"] != null && item.Total_Actual != 0)
                 {
                     <td>

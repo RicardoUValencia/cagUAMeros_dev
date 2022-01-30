@@ -99,9 +99,11 @@
                 </td>
 
                 <td>
-                    @Html.ActionLink(" ", "Editar", "Libro", new { id = @item.ID }, new { @class = "glyphicon glyphicon-pencil btn btn-primary", @Onclick = "editar()" })
+                    
+                    
+                    @Html.ActionLink("Editar", "Editar", "Libro", new { id = @item.ID }, new { @class = "bi bi-pencil-square btn btn-primary", @Onclick = "editar()" })
 
-                    @Html.ActionLink(" ", "Eliminar", "Libro", new { id = @item.ID }, new { @class = "glyphicon glyphicon-trash btn btn-danger", @Onclick = "eliminar()" })
+                    @Html.ActionLink("Eliminar", "Eliminar", "Libro", new { id = @item.ID }, new { @class = "glyphicon glyphicon-trash btn btn-danger mt-3", @Onclick = "eliminar()" })
                 </td>
             </tr>
         }
