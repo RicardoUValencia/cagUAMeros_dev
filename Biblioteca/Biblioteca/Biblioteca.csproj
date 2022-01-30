@@ -137,6 +137,7 @@
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\NoticiaController.cs" />
     <Compile Include="Controllers\PrestamoController.cs" />
+    <Compile Include="Controllers\SugerenciaController.cs" />
     <Compile Include="Controllers\UsuarioController.cs" />
     <Compile Include="DBContext\ApplicationDBContext.cs" />
     <Compile Include="DTOS\CarruselDTO.cs" />
@@ -184,7 +185,7 @@
     <Compile Include="Models\Categoria.cs" />
     <Compile Include="Models\Libro.cs" />
     <Compile Include="Models\Prestamo.cs" />
-    <Compile Include="Models\Sugenrencia.cs" />
+    <Compile Include="Models\Sugerencia.cs" />
     <Compile Include="Models\TipoUsuario.cs" />
     <Compile Include="Models\Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -354,6 +355,7 @@
     <Content Include="Views\Noticia\Editar.cshtml" />
     <Content Include="Views\Noticia\Index.cshtml" />
     <Content Include="Views\Libro\Informacion.cshtml" />
+    <Content Include="Views\Sugerencia\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -385,6 +387,8 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202201210251387_Modelo_libro_actualizado.resx">
       <DependentUpon>202201210251387_Modelo_libro_actualizado.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202201170436363_Carrusel.resx">
+      <DependentUpon>202201170436363_Carrusel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

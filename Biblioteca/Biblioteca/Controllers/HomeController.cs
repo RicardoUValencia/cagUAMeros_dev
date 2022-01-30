@@ -15,7 +15,7 @@ namespace Biblioteca.Controllers
         private ApplicationDBContext bd;
         public ActionResult Index()
         {
-             var carruselDTO = new List<CarruselDTO>();
+            var carruselDTO = new List<CarruselDTO>();
             using (bd = new ApplicationDBContext())
             {
                 carruselDTO = (from c in bd.Carrusel

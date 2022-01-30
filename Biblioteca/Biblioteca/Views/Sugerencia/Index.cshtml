@@ -1,0 +1,41 @@
+﻿@using Biblioteca.DTOS 
+@model IEnumerable<SugerenciaDTO>
+
+    @{
+        ViewBag.Title = "Index";
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }
+
+    <h2>Sugerencia</h2>
+
+    @using (Html.BeginForm("Index", "Sugerencia", FormMethod.Post, new { @id = "frmSugerencia" }))
+    {
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Comentario)
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <th>
+                @Html.DisplayFor(modelitem => item.Nombre)
+            </th>
+            <th>
+                @Html.DisplayFor(modelitem => item.Email)
+            </th>
+            <th>
+                @Html.DisplayFor(modelitem => item.Comentario)
+            </th>
+        </tr>
+    }
+</table>
+    }

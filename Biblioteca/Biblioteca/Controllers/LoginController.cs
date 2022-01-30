@@ -2,6 +2,7 @@
 using Biblioteca.DTOS;
 using Biblioteca.Models;
 using System;
+using System.Web.Security;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -37,8 +38,10 @@ namespace Biblioteca.Controllers
 
             using (bd = new ApplicationDBContext())
             {
+                
                 int habilitado = bd.Usuarios.Where(a => a.U_Habilitado == 1 && a.Email.Equals(correo)).Count();
 
+                //if (alumnoDTO.Email.Equals(correo) && alumnoDTO.Password.Equals(byteContraCifrada))
                 if (habilitado == 0)
                 {
                     mensaje = "El usuario no existe";
