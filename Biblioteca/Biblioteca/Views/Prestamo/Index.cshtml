@@ -27,8 +27,12 @@
                 @Html.DisplayNameFor(model => model.Fecha_Devolucion)
             </th>
             <th>
+                @Html.DisplayNameFor(model => model.Deuda)
+            </th>
+            <th>
                 Operaciones
             </th>
+
         </tr>
         <tr>
             <td></td>
@@ -41,37 +45,40 @@
 
         @foreach (var item in Model)
         {
-            <tr>
+    <tr>
 
-                <td>
-                    @Html.DisplayFor(modelItem => item.ID)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.tituloLibro)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.nombreUsuario)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Fecha_Prestamo)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Fecha_Devolucion)
-                </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tituloLibro)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nombreUsuario)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Fecha_Prestamo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Fecha_Devolucion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Deuda)
+        </td>
 
-                <td>
-                    @Html.ActionLink(" ", "Devolver", "Prestamo", new { id = @item.ID }, new { @class = "glyphicon glyphicon-check btn btn-primary", @Onclick = "editar()" })
+        <td>
+            @Html.ActionLink(" ", "Devolver", "Prestamo", new { id = @item.ID }, new { @class = "glyphicon glyphicon-check btn btn-primary", @Onclick = "editar()" })
 
-                    @Html.ActionLink(" ", "Cancelar", "Prestamo", new { id = @item.ID }, new { @class = "glyphicon glyphicon-trash btn btn-danger", @Onclick = "eliminar()" })
-                </td>
-            </tr>
+            @Html.ActionLink(" ", "Cancelar", "Prestamo", new { id = @item.ID }, new { @class = "glyphicon glyphicon-trash btn btn-danger", @Onclick = "eliminar()" })
+        </td>
+    </tr>
         }
 
     </table>
 }
 <script>
 
-    let Nombre_Autor = document.getElementById("nombreUsuario");
+    let Nombre_Autor = document.getElementById("nombreUsuario");    
     let frmFiltro = document.getElementById("frmFiltro");
 
     Nombre_Autor.onkeyup = function () {

@@ -7,7 +7,6 @@ namespace Biblioteca.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.4")]
-
     public sealed partial class Imagen_y_pdf_de_libros : IMigrationMetadata
     {
         private readonly ResourceManager Resources = new ResourceManager(typeof(Imagen_y_pdf_de_libros));
@@ -15,7 +14,6 @@ namespace Biblioteca.Migrations
         string IMigrationMetadata.Id
         {
             get { return "202201200131213_Imagen_y_pdf_de_libros"; }
-
     public sealed partial class Deuda : IMigrationMetadata
     {
         private readonly ResourceManager Resources = new ResourceManager(typeof(Deuda));
@@ -23,7 +21,6 @@ namespace Biblioteca.Migrations
         string IMigrationMetadata.Id
         {
             get { return "202201231912511_Deuda"; }
-
         }
         
         string IMigrationMetadata.Source

@@ -176,6 +176,10 @@
     <Compile Include="Migrations\202201210251387_Modelo_libro_actualizado.designer.cs">
       <DependentUpon>202201210251387_Modelo_libro_actualizado.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202201231912511_Deuda.cs" />
+    <Compile Include="Migrations\202201231912511_Deuda.designer.cs">
+      <DependentUpon>202201231912511_Deuda.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Carrusel.cs" />
     <Compile Include="Models\Categoria.cs" />
@@ -377,6 +381,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202201210251387_Modelo_libro_actualizado.resx">
       <DependentUpon>202201210251387_Modelo_libro_actualizado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202201231912511_Deuda.resx">
+      <DependentUpon>202201231912511_Deuda.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
