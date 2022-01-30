@@ -3,7 +3,7 @@
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class Carrusel : DbMigration
+    public partial class carruselbueno : DbMigration
     {
         public override void Up()
         {

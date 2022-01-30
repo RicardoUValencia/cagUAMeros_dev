@@ -92,7 +92,7 @@
         }
 
         .btn {
-            color: #680606;
+            height 20px;
         }
     </style>
 </head>
@@ -162,10 +162,10 @@
                             {
                                 <tr>
                                     <td>
-                                        @Html.DisplayFor(modelItem =>item.LibroID)
+                                        @Html.DisplayFor(modelItem => item.LibroID)
                                     </td>
                                     <td>
-                                        @Html.DisplayFor(modelItem =>item.tituloLibro )
+                                        @Html.DisplayFor(modelItem => item.tituloLibro)
                                     </td>
                                     <td>
                                         @Html.DisplayFor(modelItem => item.Fecha_Prestamo)
@@ -173,13 +173,17 @@
                                     <td>
                                         @Html.DisplayFor(modelItem => item.Fecha_Devolucion)
                                     </td>
-                                   
 
-                                    
+
+
                                 </tr>
                             }
 
                         </table>
+                        
+                        <div class="send-report" >
+                            @Html.ActionLink("Enviar Tabla", "EnviarTabla", "Login", new {nombre= Model.Nombre , email=Model.Email, prestamos=Model.prestamos }, new { @class = " btn btn-primary " })
+                        </div>
 
                     </div>
                 </article>

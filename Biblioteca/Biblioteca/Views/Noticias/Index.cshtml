@@ -10,7 +10,7 @@
 <h2>Noticias</h2>
 
 <p>
-    @Html.ActionLink("Nueva Noticia", "Agregar", "Noticias", null, new { @class = "btn btn-primary" })
+    @Html.ActionLink("Nueva Noticia", "Agregar", "Noticia", null, new { @class = "btn btn-primary" })
 </p>
 @using (Html.BeginForm("Index", "Carrusel", FormMethod.Post, new { @id = "frmCarrusel" }))
 {
@@ -50,9 +50,9 @@
                     @Html.DisplayFor(modelItem => item.Url)
                 </td>
                 <td>
-                    @Html.ActionLink(" ", "Editar", "Noticias", new { id = @item.ID }, new { @class = "glyphicon glyphicon-pencil btn btn-primary", @Onclick = "editar()" })
+                    @Html.ActionLink(" ", "Editar", "Noticia", new { id = @item.ID }, new { @class = "glyphicon glyphicon-pencil btn btn-primary", @Onclick = "editar()" })
 
-                    @Html.ActionLink(" ", "Eliminar", "Noticias", new { id = @item.ID }, new { @class = "glyphicon glyphicon-trash btn btn-danger", @Onclick = "eliminar()" })
+                    @Html.ActionLink(" ", "Eliminar", "Noticia", new { id = @item.ID }, new { @class = "glyphicon glyphicon-trash btn btn-danger", @Onclick = "eliminar()" })
                 </td>
             </tr>
         }

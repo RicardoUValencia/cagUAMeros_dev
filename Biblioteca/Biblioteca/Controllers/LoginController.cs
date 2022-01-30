@@ -4,6 +4,8 @@ using Biblioteca.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
 using System.Security.Cryptography;
 using System.Text;
 using System.Web;
@@ -61,6 +63,9 @@ namespace Biblioteca.Controllers
                         if (usuario.TipoUsuarioID == 1 || usuario.TipoUsuarioID == 2)
                         {
                             Session["Usuario"] = usuario;
+
+
+
                         }
                         else if (usuario.TipoUsuarioID == 3)
                         {
@@ -164,6 +169,106 @@ namespace Biblioteca.Controllers
 
             return View(usuario);
         }
+
+        
+        public ActionResult EnviarTabla( String nombre, String email, List<PrestamoDTO> prestamos)
+        {
+            
+            //prestamos = null;
+            
+            
+            
+
+           
+            using (bd = new ApplicationDBContext())
+               {
+                  prestamos = (from p in bd.Prestamos
+                                 join u in bd.Usuarios
+                                 on p.UsuarioID equals u.ID
+                                 join l in bd.Libros on p.LibroID equals l.ID
+                                 where u.Nombre.Contains(nombre)
+                                 select new PrestamoDTO
+                                 {
+                                     ID = p.ID,
+                                     nombreUsuario = u.Nombre,
+                                     tituloLibro = l.Titulo,
+                                     Fecha_Devolucion = p.Fecha_Devolucion,
+                                     Fecha_Prestamo = p.Fecha_Prestamo
+
+                                 }).ToList();
+              }
+            
+           
+            String body ="<h2> Hola "+ nombre +", le proporcionamos la información acerca de sus prestamos</h2>"+
+                            "<table>" +
+                                 "<tr>" +
+                                    "<th>Libro</th>" +
+                                    "<th>Fecha de prestamo</th>" +
+                                    "<th>Fecha de devolucion</th>"
+                                +"</tr>";
+
+
+
+
+           foreach (var item in prestamos)
+            {
+                body=body+ "" +
+                    "<tr>" +
+                        "<td>" +
+                            item.tituloLibro+
+                         "</td>"+
+                          "<td>" +
+                            item.Fecha_Prestamo.ToString("dddd, dd MMMM yyyy") +
+                         "</td>"+
+                          "<td>" +
+                            item.Fecha_Devolucion.ToString("dddd, dd MMMM yyyy") +
+                         "</td>"+
+                         "</tr>";
+
+            }
+            body = body + "</table>";
+            if(prestamos.Count==0)
+            {
+                body = "No tiene prestamos";
+            }
+
+           
+            SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587)
+            {
+                UseDefaultCredentials = false,
+                DeliveryMethod = SmtpDeliveryMethod.Network,
+                EnableSsl = true,
+                Credentials = new NetworkCredential("bibliotecadig.is@gmail.com", "asd?123456")
+            };
+
+            MailMessage mail = new MailMessage();
+            mail.From = new MailAddress("blibliotecadig.is@gmail.com", "Biblioteca Digital");
+            mail.To.Add(new MailAddress(email));
+            mail.Subject = "Información acerca de sus prestamos";
+            mail.IsBodyHtml = true;
+            mail.Body = body;
+     
+            
+            smtp.Send(mail);
+            if(body=="No tiene prestamos")
+            {
+                return RedirectToAction("Index", "Buscar");
+            }
+            else
+            {
+                return RedirectToAction("Perfil","Login");
+            }
+            
+            
+           
+            
+            
+            
+           
+            //System.Web.Mvc.ActionResult
+
+        }
+
 
 
 
