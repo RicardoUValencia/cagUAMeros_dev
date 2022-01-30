@@ -18,6 +18,5 @@ namespace Biblioteca.Models
         public string Password { get; set; }
         public int U_Habilitado { get; set; }//Indica si el usuario esta activo
         public TipoUsuario TipoUsuario { get; set; }
-        public int Deuda { get; set; }
     }
 }

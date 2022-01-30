@@ -46,8 +46,6 @@ namespace Biblioteca.DTOS
         [MinLength(8, ErrorMessage = "La longitud minima son 8 caracteres")]
         public string Password { get; set; }
 
-        public int Deuda { get; set; }
-
         #region Campos extra
         [Display(Name = "Tipo usuario")]
         public string Tipo_Usuario { get; set; }//Muestra el nombre de tipo usuario

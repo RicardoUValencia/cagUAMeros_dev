@@ -57,8 +57,10 @@ namespace Biblioteca.Controllers
                                       nombreUsuario = u.Nombre,
                                       tituloLibro = l.Titulo,
                                       Fecha_Devolucion = c.Fecha_Devolucion,
-                                      Fecha_Prestamo = c.Fecha_Prestamo
+                                      Fecha_Prestamo = c.Fecha_Prestamo,
+                                      Deuda = c.Deuda
                                   }).ToList();
+                    Deuda(prestamos);
                 }
 
             }
@@ -108,11 +110,23 @@ namespace Biblioteca.Controllers
 
         }
 
-        public void Deuda(PrestamoDTO prestamo, UsuarioDTO usuario)
-        {
-            if (DateTime.Compare(prestamo.Fecha_Devolucion, DateTime.Now) < 0)
+        public void Deuda(List<PrestamoDTO> prestamos)
+        { 
+
+            foreach (var prestamo in prestamos)
             {
-                usuario.Deuda = usuario.Deuda + 50;
+                if (DateTime.Compare(prestamo.Fecha_Devolucion, DateTime.Now) < 0)
+                {
+                    using (bd = new ApplicationDBContext())
+                    {
+                       prestamo.Deuda = prestamo.Deuda + 50;
+                       var p = bd.Prestamos.Where(pres=>pres.ID==prestamo.ID).FirstOrDefault();
+                       p.Deuda = prestamo.Deuda;
+                       bd.SaveChanges();
+
+                      
+                    }           
+                }
             }
         }
 
