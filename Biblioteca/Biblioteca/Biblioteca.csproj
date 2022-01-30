@@ -164,10 +164,6 @@
     <Compile Include="Migrations\202110171903341_Prestamos.designer.cs">
       <DependentUpon>202110171903341_Prestamos.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202112132231074_Sugerencias.cs" />
-    <Compile Include="Migrations\202112132231074_Sugerencias.designer.cs">
-      <DependentUpon>202112132231074_Sugerencias.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\202201182331408_carruselbueno.cs" />
     <Compile Include="Migrations\202201182331408_carruselbueno.designer.cs">
       <DependentUpon>202201182331408_carruselbueno.cs</DependentUpon>
@@ -376,9 +372,6 @@
     <EmbeddedResource Include="Migrations\202110171903341_Prestamos.resx">
       <DependentUpon>202110171903341_Prestamos.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202112132231074_Sugerencias.resx">
-      <DependentUpon>202112132231074_Sugerencias.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202201182331408_carruselbueno.resx">
       <DependentUpon>202201182331408_carruselbueno.cs</DependentUpon>
     </EmbeddedResource>
@@ -387,9 +380,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202201210251387_Modelo_libro_actualizado.resx">
       <DependentUpon>202201210251387_Modelo_libro_actualizado.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202201170436363_Carrusel.resx">
-      <DependentUpon>202201170436363_Carrusel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
