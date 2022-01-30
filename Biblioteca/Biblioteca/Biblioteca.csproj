@@ -168,17 +168,9 @@
     <Compile Include="Migrations\202201182331408_carruselbueno.designer.cs">
       <DependentUpon>202201182331408_carruselbueno.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202201200131213_Imagen_y_pdf_de_libros.cs" />
-    <Compile Include="Migrations\202201200131213_Imagen_y_pdf_de_libros.designer.cs">
-      <DependentUpon>202201200131213_Imagen_y_pdf_de_libros.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\202201210251387_Modelo_libro_actualizado.cs" />
     <Compile Include="Migrations\202201210251387_Modelo_libro_actualizado.designer.cs">
       <DependentUpon>202201210251387_Modelo_libro_actualizado.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202201231912511_Deuda.cs" />
-    <Compile Include="Migrations\202201231912511_Deuda.designer.cs">
-      <DependentUpon>202201231912511_Deuda.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Carrusel.cs" />
@@ -376,14 +368,8 @@
     <EmbeddedResource Include="Migrations\202201182331408_carruselbueno.resx">
       <DependentUpon>202201182331408_carruselbueno.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202201200131213_Imagen_y_pdf_de_libros.resx">
-      <DependentUpon>202201200131213_Imagen_y_pdf_de_libros.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202201210251387_Modelo_libro_actualizado.resx">
       <DependentUpon>202201210251387_Modelo_libro_actualizado.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202201231912511_Deuda.resx">
-      <DependentUpon>202201231912511_Deuda.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
