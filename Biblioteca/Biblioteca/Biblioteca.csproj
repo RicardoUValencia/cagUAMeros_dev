@@ -387,6 +387,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202201210251387_Modelo_libro_actualizado.resx">
       <DependentUpon>202201210251387_Modelo_libro_actualizado.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202201170436363_Carrusel.resx">
       <DependentUpon>202201170436363_Carrusel.cs</DependentUpon>
     </EmbeddedResource>
