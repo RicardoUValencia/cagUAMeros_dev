@@ -19,7 +19,7 @@ namespace Biblioteca.Controllers
         {
             return View();
         }
-        
+       
         [HttpPost]
         public ActionResult Index(UsuarioDTO alumnoDTO)
         {
@@ -37,15 +37,16 @@ namespace Biblioteca.Controllers
             using (bd = new ApplicationDBContext())
             {
                 int habilitado = bd.Usuarios.Where(a => a.U_Habilitado == 1 && a.Email.Equals(correo)).Count();
-
+                
                 if (habilitado == 0)
                 {
+                    //Usuario no habilitado
                     alumnoDTO.mensaje = "El Usuario no existe.";
                     return View(alumnoDTO);
-                    //return RedirectToAction("Index", "Login");
                 }
                 else
                 {
+                    //Usuario habilitado
                     int numeroVeces = bd.Usuarios.Where(a => a.Email.Equals(correo)
                                      && a.Password.Equals(passwordCifrado)).Count();
 
@@ -53,15 +54,16 @@ namespace Biblioteca.Controllers
 
                     if (mensaje.Equals("0"))
                     {
+                        //Contraseña incorrecta
                         alumnoDTO.mensaje = "Contraseña incorrecta.";
                         return View(alumnoDTO);
-                        //return RedirectToAction("Login", "Login");
                     }
                     else
                     {
+                        //Sesión iniciada 
                         Usuario usuario = bd.Usuarios.Where(a => a.Email.Equals(correo)
                                                   && a.Password.Equals(passwordCifrado)).First();
-
+                        //Buscando el tipo de usuario
                         if (usuario.TipoUsuarioID == 1 || usuario.TipoUsuarioID == 2)
                         {
                             Session["Usuario"] = usuario;

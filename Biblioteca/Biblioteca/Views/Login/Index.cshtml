@@ -60,6 +60,20 @@
         </div>
         <div class="ContentForm">
 
+            <div>
+                @if (Model != null && !Model.mensaje.Equals(""))
+                {
+                    var mensaje = Model.mensaje;
+
+                    <div class="alert alert-danger d-flex align-items-center" role="alert">
+                        <svg class="bi flex-shrink-0 me-2" width="5" height="5" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill" /></svg>
+                        <div>
+                            @mensaje;
+                        </div>
+                    </div>
+                }
+            </div>
+
             @using (@Html.BeginForm("Index", "Login", FormMethod.Post, new { @id = "frmLogin" }))
             {
                 <div class="input-group input-group-lg">
@@ -78,19 +92,7 @@
             }
 
         </div>
-        <div>
-            @if (Model != null && !Model.mensaje.Equals(""))
-                    {
-                        var mensaje = Model.mensaje;
-
-                <div class="alert alert-danger d-flex align-items-center" role="alert">
-                    <svg class="bi flex-shrink-0 me-2" width="5" height="5" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill" /></svg>
-                    <div>
-                        @mensaje;
-                    </div>
-                </div>
-            }
-        </div>
+       
 
     </div>
     @Scripts.Render("~/bundles/jquery")
