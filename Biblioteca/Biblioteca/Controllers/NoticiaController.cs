@@ -93,8 +93,10 @@ namespace Biblioteca.Controllers
             {
                 Carrusel carrusel = bd.Carrusel.Where(i => i.ID.Equals(carruselDTO.ID)).First();
 
-                carrusel.ID = carruselDTO.ID;
+                carrusel.Descripcion = carruselDTO.Descripcion;
                 carrusel.Nombre = carruselDTO.Nombre;
+                carrusel.ImagePath = carruselDTO.ImagePath;
+                carrusel.Url = carruselDTO.Url;
 
                 bd.SaveChanges();
             }

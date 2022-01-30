@@ -50,9 +50,9 @@
                     @Html.DisplayFor(modelItem => item.Url)
                 </td>
                 <td>
-                    @Html.ActionLink(" ", "Editar", "Noticia", new { id = @item.ID }, new { @class = "glyphicon glyphicon-pencil btn btn-primary", @Onclick = "editar()" })
+                    @Html.ActionLink("Editar", "Editar", "Noticia", new { id = @item.ID }, new { @class = "glyphicon glyphicon-pencil btn btn-primary", @Onclick = "editar()" })
 
-                    @Html.ActionLink(" ", "Eliminar", "Noticia", new { id = @item.ID }, new { @class = "glyphicon glyphicon-trash btn btn-danger", @Onclick = "eliminar()" })
+                    @Html.ActionLink(" Eliminar", "Eliminar", "Noticia", new { id = @item.ID }, new { @class = "glyphicon glyphicon-trash btn btn-danger", @Onclick = "eliminar()" })
                 </td>
             </tr>
         }

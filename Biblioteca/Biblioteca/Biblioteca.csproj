@@ -42,7 +42,7 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
-    <Optimize>true</Optimize>
+    <Optimize>false</Optimize>
     <OutputPath>bin\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
@@ -164,13 +164,13 @@
     <Compile Include="Migrations\202110171903341_Prestamos.designer.cs">
       <DependentUpon>202110171903341_Prestamos.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202201182331408_carruselbueno.cs" />
-    <Compile Include="Migrations\202201182331408_carruselbueno.designer.cs">
-      <DependentUpon>202201182331408_carruselbueno.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\202201210251387_Modelo_libro_actualizado.cs" />
     <Compile Include="Migrations\202201210251387_Modelo_libro_actualizado.designer.cs">
       <DependentUpon>202201210251387_Modelo_libro_actualizado.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202201300438169_Final.cs" />
+    <Compile Include="Migrations\202201300438169_Final.designer.cs">
+      <DependentUpon>202201300438169_Final.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Carrusel.cs" />
@@ -365,11 +365,11 @@
     <EmbeddedResource Include="Migrations\202110171903341_Prestamos.resx">
       <DependentUpon>202110171903341_Prestamos.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202201182331408_carruselbueno.resx">
-      <DependentUpon>202201182331408_carruselbueno.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202201210251387_Modelo_libro_actualizado.resx">
       <DependentUpon>202201210251387_Modelo_libro_actualizado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202201300438169_Final.resx">
+      <DependentUpon>202201300438169_Final.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
