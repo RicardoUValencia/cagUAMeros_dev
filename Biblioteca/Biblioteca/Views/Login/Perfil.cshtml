@@ -92,7 +92,7 @@
         }
 
         .btn {
-            color: #680606;
+            height 20px;
         }
     </style>
 </head>
@@ -180,8 +180,9 @@
                             }
 
                         </table>
+                        
                         <div class="send-report" >
-                            @Html.ActionLink("Enviar Tabla", "EnviarTabla", "Login", new {nombre=Model.Nombre, email=Model.Email }, new { @class = "btn btn-primary " })
+                            @Html.ActionLink("Enviar Tabla", "EnviarTabla", "Login", new {nombre= Model.Nombre , email=Model.Email, prestamos=Model.prestamos }, new { @class = " btn btn-primary " })
                         </div>
 
                     </div>
