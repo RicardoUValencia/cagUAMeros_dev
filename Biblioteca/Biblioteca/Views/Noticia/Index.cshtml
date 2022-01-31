@@ -7,7 +7,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Noticias</h2>
+<h2 class="mt-5">Noticias</h2>
 
 <p>
     @Html.ActionLink("Nueva Noticia", "Agregar", "Noticia", null, new { @class = "btn btn-primary" })
@@ -52,7 +52,7 @@
                 <td>
                     @Html.ActionLink("Editar", "Editar", "Noticia", new { id = @item.ID }, new { @class = "glyphicon glyphicon-pencil btn btn-primary", @Onclick = "editar()" })
 
-                    @Html.ActionLink(" Eliminar", "Eliminar", "Noticia", new { id = @item.ID }, new { @class = "glyphicon glyphicon-trash btn btn-danger", @Onclick = "eliminar()" })
+                    @Html.ActionLink(" Eliminar", "Eliminar", "Noticia", new { id = @item.ID }, new { @class = "glyphicon glyphicon-trash btn btn-danger mt-3", @Onclick = "eliminar()" })
                 </td>
             </tr>
         }

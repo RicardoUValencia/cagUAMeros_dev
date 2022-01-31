@@ -260,8 +260,7 @@ namespace Biblioteca.Controllers
         public void listaTipoUsuario()
         {
             List<SelectListItem> tipoUsuarios;
-
-
+            List<SelectListItem> profesores;
 
             if (Session["Administrador"] != null)
             {
@@ -271,14 +270,23 @@ namespace Biblioteca.Controllers
 
                     tipoUsuarios = (from u in bd.TipoUsuarios
                                     where u.U_habilitado == 1
+                                    && u.ID == 1
                                     select new SelectListItem
                                     {
                                         Text = u.Tipo_Usuario,
                                         Value = u.ID.ToString()
                                     }).ToList();
 
+                    profesores = (from u in bd.TipoUsuarios
+                                    where u.U_habilitado == 1
+                                    && u.ID == 2
+                                    select new SelectListItem
+                                    {
+                                        Text = u.Tipo_Usuario,
+                                        Value = u.ID.ToString()
+                                    }).ToList();
 
-                    tipoUsuarios.Where(x => x.Value.Equals("1") && x.Value.Equals("2")).ToList();
+                    tipoUsuarios.Add(profesores.First());
 
                 }
                 tipoUsuarios.Insert(0, new SelectListItem { Text = "--Seleccione--", Value = "" });

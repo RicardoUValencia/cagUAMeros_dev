@@ -81,9 +81,9 @@
                 </td>
 
                 <td>
-                    @Html.ActionLink(" ", "Editar", "Usuario", new { id = @item.ID }, new { @class = "glyphicon glyphicon-pencil btn btn-primary", @Onclick = "editar()" })
+                    @Html.ActionLink("Editar", "Editar", "Usuario", new { id = @item.ID }, new { @class = "glyphicon glyphicon-pencil btn btn-primary", @Onclick = "editar()" })
 
-                    @Html.ActionLink(" ", "Eliminar", "Usuario", new { id = @item.ID }, new { @class = "glyphicon glyphicon-trash btn btn-danger", @Onclick = "eliminar()" })
+                    @Html.ActionLink("Eliminar", "Eliminar", "Usuario", new { id = @item.ID }, new { @class = "glyphicon glyphicon-trash btn btn-danger mt-3", @Onclick = "eliminar()" })
                 </td>
             </tr>
         }

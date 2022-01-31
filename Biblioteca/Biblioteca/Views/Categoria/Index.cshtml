@@ -4,9 +4,9 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
 
-<h2>Categorias</h2>
+
+<h2 class="mt-5">Categorias de libros actuales</h2>
 
 <p>
     @Html.ActionLink("Agregar", "Agregar", "Categoria", null, new { @class = "btn btn-primary" })
@@ -16,7 +16,6 @@
 {
     <table class="table">
         <tr>
-
             <th>
                 @Html.DisplayNameFor(model => model.ID)
             </th>
@@ -26,12 +25,12 @@
             <th>
                 Operaciones
             </th>
-
         </tr>
 
         <tr>
             <td></td>
             <td>@Html.TextBox("Nombre_Categoria", null, new { @class = "form-control" })</td>
+            <td></td>
         </tr>
 
         @foreach (var item in Model)
@@ -47,9 +46,9 @@
 
 
                 <td>
-                    @Html.ActionLink(" ", "Editar", "Categoria", new { id = @item.ID }, new { @class = "glyphicon glyphicon-pencil btn btn-primary", @onclick = "editar()" })
+                    @Html.ActionLink("Editar", "Editar", "Categoria", new { id = @item.ID }, new { @class = "glyphicon glyphicon-pencil btn btn-primary", @onclick = "editar()" })
 
-                    @Html.ActionLink(" ", "Eliminar", "Categoria", new { id = @item.ID }, new { @class = "glyphicon glyphicon-trash btn btn-danger", @onclick = "eliminar()" })
+                    @Html.ActionLink("Eliminar", "Eliminar", "Categoria", new { id = @item.ID }, new { @class = "glyphicon glyphicon-trash btn btn-danger", @onclick = "eliminar()" })
                 </td>
             </tr>
         }

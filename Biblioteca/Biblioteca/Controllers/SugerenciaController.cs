@@ -31,5 +31,21 @@ namespace Biblioteca.Controllers
             return View(sugerenciaDTO);
         }
 
+        public ActionResult Eliminar(int id)
+        {
+            using (bd = new ApplicationDBContext())
+            {
+                Sugerencia sugerencia = (from s in bd.Sugerencia
+                                         where s.ID == id
+                                         select s).FirstOrDefault();
+
+                bd.Sugerencia.Remove(sugerencia);
+
+                bd.SaveChanges();
+            }
+
+            return RedirectToAction("Index");
+        }
+
     }
 }

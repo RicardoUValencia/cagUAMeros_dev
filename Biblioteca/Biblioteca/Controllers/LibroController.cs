@@ -134,6 +134,8 @@ namespace Biblioteca.Controllers
                     l.Fecha_Registro = DateTime.Now;
                     l.Anio_Publicacion = libro.Anio_Publicacion;
                     l.img = fotoBD;
+                    l.NombreImg = foto.FileName;
+                    l.NombrePDF = PDF.FileName;
                     l.PDF = pdfBD;
                     l.L_Habilitado = 1;
 

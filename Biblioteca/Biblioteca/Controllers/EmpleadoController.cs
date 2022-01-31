@@ -43,7 +43,7 @@ namespace Biblioteca.Controllers
                                    Email = a.Email,
                                    Telefono = a.Telefono,
                                    Direccion = a.Direccion,
-                                   Fecha_Nacimiento = a.Fecha_Nacimiento,
+                                   Fecha_Registro = a.Fecha_Registro,
                                    Tipo_Usuario = u.Tipo_Usuario
                                }).ToList();
 
@@ -59,7 +59,7 @@ namespace Biblioteca.Controllers
                                         Email = a.Email,
                                         Telefono = a.Telefono,
                                         Direccion = a.Direccion,
-                                        Fecha_Nacimiento = a.Fecha_Nacimiento,
+                                        Fecha_Registro = a.Fecha_Registro,
                                         Tipo_Usuario = u.Tipo_Usuario
                                     }).ToList();
 
@@ -210,11 +210,13 @@ namespace Biblioteca.Controllers
             if (empleadoDTOVal.Nombre != null)
             {
                 nombreEmpleado = empleadoDTO.Nombre.ToString().Contains(empleadoDTOVal.Nombre);
+                var regresarValor = empleadoDTOVal.Nombre;
                 if (!nombreEmpleado)
                 {
                     empleadoDTOVal.Nombre = empleadoDTOVal.Nombre.ToUpper();
                     nombreEmpleado = empleadoDTO.Nombre.ToString().Contains(empleadoDTOVal.Nombre);
                 }
+                empleadoDTOVal.Nombre = regresarValor;
             }
 
             if (empleadoDTOVal.Tipo_Usuario != null)
@@ -235,16 +237,29 @@ namespace Biblioteca.Controllers
         public void listaTipoUsuario()
         {
             List<SelectListItem> tipoUsuarios;
+            List<SelectListItem> bibliotecario;
 
             using (bd = new ApplicationDBContext())
             {
                 tipoUsuarios = (from u in bd.TipoUsuarios
                                 where u.U_habilitado == 1
+                                && u.ID == 3
                                 select new SelectListItem
                                 {
                                     Text = u.Tipo_Usuario,
                                     Value = u.ID.ToString()
                                 }).ToList();
+
+                bibliotecario = (from u in bd.TipoUsuarios
+                                where u.U_habilitado == 1
+                                && u.ID == 4
+                                select new SelectListItem
+                                {
+                                    Text = u.Tipo_Usuario,
+                                    Value = u.ID.ToString()
+                                }).ToList();
+
+                tipoUsuarios.Add(bibliotecario.First());
             }
 
             tipoUsuarios.Insert(0, new SelectListItem { Text = "--Seleccione--", Value = "" });

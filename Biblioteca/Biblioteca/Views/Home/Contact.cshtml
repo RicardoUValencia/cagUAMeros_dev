@@ -6,7 +6,7 @@
 }
 
 
-<h2>Tienes dudas, quejas y/o sugerencias?</h2>
+<h2 class="mt-5">¿Tienes dudas, quejas y/o sugerencias?</h2>
 <br />
 <br />
 
@@ -33,7 +33,7 @@
     </div>
 
     <div>
-        @Html.LabelFor(p => p.Comentario)
+        @Html.LabelFor(p => p.Comentario)<br/>
         @Html.TextAreaFor(p => p.Comentario, null)
         @Html.ValidationMessage("Comentario", new { @class = "text-danger" })
     </div>

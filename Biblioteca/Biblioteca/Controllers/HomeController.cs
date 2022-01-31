@@ -33,7 +33,7 @@ namespace Biblioteca.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Message = "Este proyecto fue realizado por.";
 
             return View();
         }

@@ -6,36 +6,52 @@
         Layout = "~/Views/Shared/_Layout.cshtml";
     }
 
-    <h2>Sugerencia</h2>
+    <h2 class="mt-5">Sugerencias</h2>
 
     @using (Html.BeginForm("Index", "Sugerencia", FormMethod.Post, new { @id = "frmSugerencia" }))
     {
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Nombre)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Email)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Comentario)
-        </th>
-    </tr>
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Nombre)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Email)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Comentario)
+                </th>
+                <th>
+                    Operación
+                </th>
+            </tr>
 
-    @foreach (var item in Model)
-    {
-        <tr>
-            <th>
-                @Html.DisplayFor(modelitem => item.Nombre)
-            </th>
-            <th>
-                @Html.DisplayFor(modelitem => item.Email)
-            </th>
-            <th>
-                @Html.DisplayFor(modelitem => item.Comentario)
-            </th>
-        </tr>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <th>
+                        @Html.DisplayFor(modelitem => item.Nombre)
+                    </th>
+                    <th>
+                        @Html.DisplayFor(modelitem => item.Email)
+                    </th>
+                    <th>
+                        @Html.DisplayFor(modelitem => item.Comentario)
+                    </th>
+                    <th>
+                        @Html.ActionLink("Eliminar", "Eliminar", "Sugerencia", new { id = @item.ID }, new { @class = "glyphicon glyphicon-trash btn btn-danger", @Onclick = "eliminar()" })
+                    </th>
+                </tr>
+            }
+        </table>
     }
-</table>
+
+<script>
+    function eliminar() {
+        if (confirm("¿Desea eliminar el registro?") == 1) {
+            
+        } else {
+            event.preventDefault();
+        }
     }
+</script>

@@ -41,6 +41,7 @@
             <td></td>
             <td></td>
             <td></td>
+            <td></td>
         </tr>
 
         @foreach (var item in Model)
@@ -67,9 +68,9 @@
         </td>
 
         <td>
-            @Html.ActionLink(" ", "Devolver", "Prestamo", new { id = @item.ID }, new { @class = "glyphicon glyphicon-check btn btn-primary", @Onclick = "editar()" })
+            @Html.ActionLink("Devolver", "Devolver", "Prestamo", new { id = @item.ID }, new { @class = "glyphicon glyphicon-check btn btn-primary", @Onclick = "editar()" })
 
-            @Html.ActionLink(" ", "Cancelar", "Prestamo", new { id = @item.ID }, new { @class = "glyphicon glyphicon-trash btn btn-danger", @Onclick = "eliminar()" })
+            @Html.ActionLink("Cancelar", "Cancelar", "Prestamo", new { id = @item.ID }, new { @class = "glyphicon glyphicon-trash btn btn-danger mt-3", @Onclick = "eliminar()" })
         </td>
     </tr>
         }
